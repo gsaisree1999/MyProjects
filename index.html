@@ -3,276 +3,344 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SaiSri | AI/ML Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <title>Sai Sri Gottapu | AI/ML Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
   <style>
     :root {
-      --bg: #0a0c14;
-      --surface: #13151f;
-      --surface2: #1c1f2e;
-      --border: #2a2d45;
-      --accent: #6c63ff;
-      --accent2: #00d4aa;
-      --accent3: #ff6584;
-      --text: #e8eaf0;
-      --text-muted: #8b90a8;
-      --text-dim: #555a75;
-      --green: #22c55e;
-      --yellow: #eab308;
-      --radius: 14px;
+      --bg: #f5f6fa;
+      --surface: #ffffff;
+      --surface2: #f0f1f7;
+      --border: #e2e4f0;
+      --accent: #4f46e5;
+      --accent2: #059669;
+      --accent3: #e11d48;
+      --text: #111827;
+      --text-muted: #6b7280;
+      --text-dim: #9ca3af;
+      --radius: 16px;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: 'Plus Jakarta Sans', sans-serif;
       background: var(--bg);
       color: var(--text);
       line-height: 1.7;
       font-size: 15px;
     }
 
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 70% 45% at 50% 0%, rgba(108,99,255,0.13) 0%, transparent 65%),
-        radial-gradient(ellipse 50% 40% at 90% 90%, rgba(0,212,170,0.08) 0%, transparent 60%);
-      pointer-events: none;
-      z-index: 0;
-    }
-    nav, .hero, .container, footer { position: relative; z-index: 1; }
-
-    /* NAV */
+    /* ── TOP BAR ── */
     nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(10,12,20,0.92);
-      backdrop-filter: blur(16px);
+      background: var(--surface);
       border-bottom: 1px solid var(--border);
-      padding: 0 2rem;
+      padding: 0 2.5rem;
       display: flex; align-items: center; justify-content: space-between;
-      height: 60px;
+      height: 58px;
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.06);
     }
     .nav-logo {
       display: flex; align-items: center; gap: 0.6rem;
-      font-weight: 700; font-size: 0.95rem; color: var(--text);
+      font-weight: 800; font-size: 1rem; color: var(--text);
+      letter-spacing: -0.3px;
     }
-    .nav-logo-dot {
-      width: 8px; height: 8px;
-      background: var(--accent); border-radius: 50%;
-      box-shadow: 0 0 8px var(--accent);
-      animation: pulse-dot 2.5s infinite;
+    .nav-logo-badge {
+      background: var(--accent); color: #fff;
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 999px;
     }
-    @keyframes pulse-dot {
-      0%,100% { opacity:1; transform:scale(1); }
-      50% { opacity:0.4; transform:scale(0.7); }
-    }
-    .nav-links { display: flex; gap: 1.6rem; }
+    .nav-links { display: flex; gap: 0.25rem; }
     .nav-links a {
       color: var(--text-muted); text-decoration: none;
-      font-size: 0.85rem; font-weight: 500; transition: color 0.2s;
+      font-size: 0.83rem; font-weight: 600; padding: 6px 14px;
+      border-radius: 8px; transition: all 0.15s;
       display: flex; align-items: center; gap: 0.35rem;
     }
-    .nav-links a:hover { color: var(--accent2); }
+    .nav-links a:hover { background: var(--surface2); color: var(--accent); }
 
-    /* HERO */
-    .hero {
-      max-width: 860px; margin: 0 auto;
-      padding: 80px 2rem 60px; text-align: center;
-    }
-    .hero-avatar {
-      width: 96px; height: 96px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      display: flex; align-items: center; justify-content: center;
-      font-size: 2rem; font-weight: 800; color: #fff;
-      margin: 0 auto 1.5rem;
-      box-shadow: 0 0 0 4px rgba(108,99,255,0.2), 0 0 30px rgba(108,99,255,0.25);
-    }
-    .hero-role {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: rgba(108,99,255,0.1); border: 1px solid rgba(108,99,255,0.3);
-      color: var(--accent); font-size: 0.78rem; font-weight: 600;
-      letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 5px 14px; border-radius: 999px; margin-bottom: 1.2rem;
-    }
-    .hero h1 {
-      font-size: clamp(2rem, 5vw, 3rem); font-weight: 800;
-      line-height: 1.15; letter-spacing: -0.8px; margin-bottom: 1rem;
-    }
-    .hero h1 span { color: var(--accent); }
-    .hero p {
-      color: var(--text-muted); font-size: 1.05rem;
-      max-width: 600px; margin: 0 auto 2rem; line-height: 1.75;
-    }
-    .hero-tags {
-      display: flex; flex-wrap: wrap; justify-content: center;
-      gap: 0.5rem; margin-bottom: 2.2rem;
-    }
-    .tag {
-      background: rgba(108,99,255,0.08); border: 1px solid rgba(108,99,255,0.25);
-      color: var(--text-muted); font-size: 0.77rem; font-weight: 500;
-      padding: 5px 13px; border-radius: 999px;
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .tag:hover { border-color: var(--accent); color: var(--text); }
-    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-    .btn {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 10px 22px; border-radius: 8px;
-      font-size: 0.9rem; font-weight: 600;
-      text-decoration: none; transition: all 0.2s; cursor: pointer; border: none;
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--accent), #5a52e0);
-      color: #fff; box-shadow: 0 4px 18px rgba(108,99,255,0.35);
-    }
-    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(108,99,255,0.45); }
-    .btn-outline {
-      background: transparent; border: 1px solid var(--border); color: var(--text);
-    }
-    .btn-outline:hover { border-color: var(--accent2); color: var(--accent2); }
-
-    /* STATS BAR */
-    .stats-bar {
-      display: flex; justify-content: center; max-width: 520px;
-      margin: 2.2rem auto 0;
-      border: 1px solid var(--border); border-radius: var(--radius);
-      overflow: hidden; background: var(--surface);
-    }
-    .stat-item {
-      flex: 1; padding: 0.9rem 0.5rem; text-align: center;
-      border-right: 1px solid var(--border);
-    }
-    .stat-item:last-child { border-right: none; }
-    .stat-num { font-size: 1.4rem; font-weight: 800; color: var(--accent2); line-height: 1; margin-bottom: 0.2rem; }
-    .stat-label { font-size: 0.68rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; }
-
-    /* LAYOUT */
-    .container { max-width: 900px; margin: 0 auto; padding: 0 2rem 80px; }
-
-    /* SECTION */
-    .section { margin-bottom: 3.5rem; }
-    .section-header {
-      display: flex; align-items: center; gap: 0.85rem;
-      margin-bottom: 1.5rem; padding-bottom: 0.85rem;
+    /* ── HERO (split layout) ── */
+    .hero-wrap {
+      background: var(--surface);
       border-bottom: 1px solid var(--border);
     }
-    .section-icon {
-      width: 34px; height: 34px;
-      background: linear-gradient(135deg, rgba(108,99,255,0.2), rgba(0,212,170,0.12));
-      border: 1px solid rgba(108,99,255,0.3); border-radius: 9px;
-      display: flex; align-items: center; justify-content: center; font-size: 1rem;
+    .hero {
+      max-width: 1000px; margin: 0 auto;
+      padding: 60px 2.5rem;
+      display: grid; grid-template-columns: 1fr 340px;
+      gap: 3rem; align-items: center;
     }
-    .section-header h2 { font-size: 1.1rem; font-weight: 700; letter-spacing: -0.2px; }
-    .section-divider {
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--border), transparent);
-      margin: 0 0 3.5rem;
+    .hero-left {}
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: #ede9fe; color: var(--accent);
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 4px 12px; border-radius: 999px;
+      margin-bottom: 1.2rem;
     }
+    .hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800; line-height: 1.15;
+      letter-spacing: -0.8px; margin-bottom: 1rem; color: var(--text);
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      color: var(--text-muted); font-size: 1rem;
+      max-width: 480px; margin-bottom: 1.8rem; line-height: 1.75;
+    }
+    .hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 10px 22px; border-radius: 10px;
+      font-size: 0.88rem; font-weight: 700;
+      text-decoration: none; transition: all 0.18s; border: none; cursor: pointer;
+      font-family: inherit;
+    }
+    .btn-primary {
+      background: var(--accent); color: #fff;
+      box-shadow: 0 4px 16px rgba(79,70,229,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(79,70,229,0.4); }
+    .btn-ghost {
+      background: var(--surface2); color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
 
-    /* CARD */
-    .card {
+    /* HERO RIGHT — profile card */
+    .hero-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem; text-align: center;
+    }
+    .hero-avatar {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; font-weight: 800; color: #fff;
+      margin: 0 auto 1rem;
+      box-shadow: 0 0 0 4px #ede9fe;
+    }
+    .hero-card-name { font-size: 1rem; font-weight: 800; margin-bottom: 0.2rem; }
+    .hero-card-role { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1rem; }
+    .hero-stats {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0.5rem; margin-bottom: 1rem;
+    }
+    .hero-stat {
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 1.5rem; margin-bottom: 1rem;
-      transition: border-color 0.2s, box-shadow 0.2s;
+      border-radius: 10px; padding: 0.6rem;
     }
-    .card:hover { border-color: rgba(108,99,255,0.3); box-shadow: 0 4px 20px rgba(108,99,255,0.06); }
-    .card:last-child { margin-bottom: 0; }
+    .hero-stat-num { font-size: 1.2rem; font-weight: 800; color: var(--accent); line-height: 1; }
+    .hero-stat-label { font-size: 0.65rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; justify-content: center; }
+    .tag {
+      background: var(--surface2); border: 1px solid var(--border);
+      color: var(--text-muted); font-size: 0.72rem; font-weight: 600;
+      padding: 3px 10px; border-radius: 999px;
+    }
 
-    /* ARTIFACT / PROJECT CARD */
-    .project-card {
-      background: var(--surface); border: 1px solid rgba(108,99,255,0.35);
-      border-radius: var(--radius); overflow: hidden;
-      box-shadow: 0 0 40px rgba(108,99,255,0.07);
+    /* ── MAIN LAYOUT ── */
+    .page { max-width: 1000px; margin: 0 auto; padding: 3rem 2.5rem 5rem; }
+
+    /* ── SECTION HEADER ── */
+    .section { margin-bottom: 3rem; }
+    .section-label {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 1.5rem;
     }
-    .project-header { padding: 1.5rem 1.5rem 1rem; border-bottom: 1px solid var(--border); }
-    .project-title-row {
+    .section-label-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: #ede9fe; color: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.95rem; flex-shrink: 0;
+    }
+    .section-label h2 { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.2px; }
+    .section-label .artifact-pill {
+      margin-left: auto;
+      background: var(--accent); color: #fff;
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 3px 12px; border-radius: 999px;
+    }
+    .divider { height: 1px; background: var(--border); margin-bottom: 3rem; }
+
+    /* ── ARTIFACT CARD ── */
+    .artifact-wrap {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+    .artifact-header {
+      padding: 1.75rem 2rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(135deg, #fafafa, #f5f3ff);
+    }
+    .artifact-title-row {
       display: flex; align-items: flex-start;
       justify-content: space-between; gap: 1rem; margin-bottom: 0.5rem;
     }
-    .project-title { font-size: 1.2rem; font-weight: 700; }
-    .project-subtitle { color: var(--text-muted); font-size: 0.88rem; margin-bottom: 0.75rem; }
-    .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-    .project-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.5rem; }
-    .subsection-title {
-      font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.1em; color: var(--accent2); margin-bottom: 0.6rem;
+    .artifact-title { font-size: 1.3rem; font-weight: 800; }
+    .live-pill {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: #dcfce7; border: 1px solid #86efac; color: #15803d;
+      font-size: 0.72rem; font-weight: 700; padding: 4px 12px; border-radius: 999px;
+      white-space: nowrap;
     }
-    .subsection p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.75; }
-
-    /* TIMELINE VISUAL */
-    .timeline-display {
-      background: var(--surface2); border: 1px solid var(--border);
-      border-radius: 10px; overflow: hidden;
-    }
-    .timeline-display img { width: 100%; display: block; }
-    .timeline-caption {
-      padding: 0.6rem 1rem;
-      font-size: 0.75rem; color: var(--text-dim); text-align: center;
-      font-style: italic;
+    .artifact-sub { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.85rem; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag-accent {
+      background: #ede9fe; border: 1px solid #c4b5fd;
+      color: var(--accent); font-size: 0.72rem; font-weight: 600;
+      padding: 3px 10px; border-radius: 999px;
     }
 
-    /* TIMELINE ERA CARDS */
-    .era-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 0.75rem;
+    /* artifact body */
+    .artifact-body { padding: 2rem; display: flex; flex-direction: column; gap: 2rem; }
+    .sub-title {
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--accent); margin-bottom: 0.65rem;
+      display: flex; align-items: center; gap: 0.4rem;
     }
-    .era-card {
-      background: var(--surface2); border: 1px solid var(--border);
-      border-radius: 10px; padding: 0.85rem 1rem;
-      transition: border-color 0.2s, transform 0.2s;
+    .sub-title::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
     }
-    .era-card:hover { border-color: rgba(108,99,255,0.4); transform: translateY(-2px); }
-    .era-year { font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--accent); font-weight: 600; margin-bottom: 0.3rem; }
-    .era-title { font-size: 0.85rem; font-weight: 700; color: var(--text); margin-bottom: 0.2rem; }
-    .era-desc { font-size: 0.75rem; color: var(--text-dim); line-height: 1.5; }
+    .prose { color: var(--text-muted); font-size: 0.9rem; line-height: 1.8; }
 
-    /* INSIGHT BOX */
-    .insight {
-      background: rgba(108,99,255,0.07); border-left: 3px solid var(--accent);
-      border-radius: 0 8px 8px 0; padding: 1rem 1.2rem;
+    /* timeline visual */
+    .timeline-visual {
+      background: linear-gradient(135deg, #f5f3ff, #ecfdf5);
+      border: 1px solid var(--border); border-radius: 12px;
+      padding: 2rem; text-align: center;
     }
-    .insight p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.8; font-style: italic; }
+    .timeline-visual-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.3rem; }
+    .timeline-visual-sub { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+    .timeline-chips {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem;
+    }
+    .t-chip {
+      display: flex; flex-direction: column; align-items: center;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px; padding: 0.55rem 0.9rem; min-width: 80px;
+    }
+    .t-chip.highlight { background: var(--accent); border-color: var(--accent); }
+    .t-chip.highlight .t-year, .t-chip.highlight .t-event { color: #fff; }
+    .t-chip.highlight2 { background: #059669; border-color: #059669; }
+    .t-chip.highlight2 .t-year, .t-chip.highlight2 .t-event { color: #fff; }
+    .t-year { font-size: 0.72rem; font-weight: 700; color: var(--accent); font-family: 'JetBrains Mono', monospace; }
+    .t-event { font-size: 0.72rem; font-weight: 600; color: var(--text); margin-top: 0.15rem; }
+    .t-chip.highlight .t-year { color: rgba(255,255,255,0.8); }
+
+    /* milestone grid */
+    .milestone-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 0.75rem;
+    }
+    .milestone {
+      background: var(--bg); border: 1px solid var(--border); border-radius: 12px;
+      padding: 1rem; transition: all 0.18s;
+    }
+    .milestone:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(79,70,229,0.08); transform: translateY(-2px); }
+    .m-year { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 600; color: var(--accent); margin-bottom: 0.3rem; }
+    .m-title { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .m-desc { font-size: 0.75rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* callout */
+    .callout {
+      background: #f5f3ff; border-left: 4px solid var(--accent);
+      border-radius: 0 12px 12px 0; padding: 1.2rem 1.5rem;
+    }
+    .callout p { font-size: 0.92rem; color: #3730a3; font-style: italic; line-height: 1.8; font-weight: 500; }
+    .callout-green {
+      background: #f0fdf4; border-left: 4px solid var(--accent2);
+      border-radius: 0 12px 12px 0; padding: 1.2rem 1.5rem;
+    }
+    .callout-green p { font-size: 0.9rem; color: #065f46; line-height: 1.8; }
 
     /* SKILLS */
-    .skills-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(185px, 1fr)); gap: 0.8rem;
-    }
-    .skill-item {
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.75rem; }
+    .skill-card {
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: 10px; padding: 0.9rem 1rem;
-      transition: border-color 0.2s, transform 0.2s;
+      border-radius: 12px; padding: 1rem;
+      transition: all 0.18s;
     }
-    .skill-item:hover { border-color: rgba(108,99,255,0.4); transform: translateY(-2px); }
-    .skill-icon { font-size: 1.3rem; margin-bottom: 0.5rem; }
-    .skill-name { font-size: 0.84rem; font-weight: 600; color: var(--text); }
-    .skill-cat { font-size: 0.7rem; color: var(--text-dim); margin-bottom: 0.45rem; text-transform: uppercase; letter-spacing: 0.05em; }
-    .skill-bar-bg { height: 3px; background: var(--border); border-radius: 999px; overflow: hidden; margin-top: 0.5rem; }
-    .skill-bar-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+    .skill-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(79,70,229,0.08); }
+    .sk-icon { font-size: 1.4rem; margin-bottom: 0.45rem; }
+    .sk-cat { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); margin-bottom: 0.2rem; }
+    .sk-name { font-size: 0.83rem; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
+    .sk-bar { height: 3px; background: var(--border); border-radius: 999px; overflow: hidden; }
+    .sk-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
 
-    /* CERT GRID */
-    .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.65rem; }
-    .cert-item {
-      background: var(--surface2); border: 1px solid var(--border);
-      border-radius: 8px; padding: 0.75rem 1rem;
-      display: flex; align-items: center; gap: 0.6rem;
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .info-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem;
     }
-    .cert-item div .cert-name { font-size: 0.83rem; font-weight: 600; color: var(--text); }
-    .cert-item div .cert-sub { font-size: 0.72rem; color: var(--text-dim); }
+    .info-card.full { grid-column: 1 / -1; }
+    .info-card.accent-border { border-left: 4px solid var(--accent); }
+    .info-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.75rem; }
+    .info-label-green { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent2); margin-bottom: 0.75rem; }
+
+    /* exp cards */
+    .exp-card {
+      background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
+      padding: 0.9rem 1rem; margin-bottom: 0.65rem;
+      display: flex; align-items: flex-start; gap: 0.75rem;
+    }
+    .exp-card:last-child { margin-bottom: 0; }
+    .exp-icon {
+      width: 34px; height: 34px; border-radius: 8px; flex-shrink: 0;
+      background: #ede9fe; color: var(--accent);
+      display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
+    }
+    .exp-title { font-size: 0.85rem; font-weight: 700; }
+    .exp-sub { font-size: 0.75rem; color: var(--text-muted); }
+
+    /* CONTACT */
+    .contact-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1.5rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+    }
+    .contact-left h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.3rem; }
+    .contact-left p { color: var(--text-muted); font-size: 0.88rem; max-width: 400px; }
+    .contact-links { display: flex; gap: 0.65rem; flex-wrap: wrap; }
+    .contact-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--surface2); border: 1px solid var(--border);
+      color: var(--text); text-decoration: none;
+      padding: 8px 16px; border-radius: 8px; font-size: 0.83rem; font-weight: 600;
+      transition: all 0.15s; font-family: inherit;
+    }
+    .contact-btn:hover { border-color: var(--accent); color: var(--accent); background: #ede9fe; }
 
     /* FOOTER */
     footer {
-      border-top: 1px solid var(--border); padding: 2rem; text-align: center;
-      color: var(--text-dim); font-size: 0.82rem;
-      background: linear-gradient(0deg, rgba(108,99,255,0.04), transparent);
+      background: var(--surface); border-top: 1px solid var(--border);
+      padding: 1.5rem 2.5rem; text-align: center;
+      color: var(--text-dim); font-size: 0.8rem;
     }
-    footer a { color: var(--accent2); text-decoration: none; }
-    footer a:hover { color: var(--accent); }
+    footer a { color: var(--accent); text-decoration: none; }
 
-    @media (max-width: 600px) {
+    /* REFS */
+    .ref-list { list-style: none; }
+    .ref-list li {
+      font-size: 0.8rem; color: var(--text-muted); line-height: 1.7;
+      padding: 0.4rem 0; border-bottom: 1px solid var(--border);
+      padding-left: 1rem; position: relative;
+    }
+    .ref-list li::before { content: '↗'; position: absolute; left: 0; color: var(--accent); }
+
+    @media (max-width: 700px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
-      .project-title-row { flex-direction: column; }
     }
   </style>
 </head>
@@ -280,7 +348,10 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo"><span class="nav-logo-dot"></span> SaiSri Katragadda</div>
+  <div class="nav-logo">
+    Sai Sri Gottapu
+    <span class="nav-logo-badge">AI/ML</span>
+  </div>
   <div class="nav-links">
     <a href="#artifact"><i class="fa-solid fa-timeline"></i> Artifact 1</a>
     <a href="#skills"><i class="fa-solid fa-bolt"></i> Skills</a>
@@ -290,214 +361,214 @@
 </nav>
 
 <!-- HERO -->
-<div class="hero">
-  <div class="hero-avatar">SK</div>
-  <div class="hero-role"><i class="fa-solid fa-brain"></i> M.S. AI/ML Student &amp; QA Systems Engineer</div>
-  <h1>From Enterprise QA<br /><span>To the Frontier of AI &amp; ML</span></h1>
-  <p>
-    4 years of production-grade quality engineering for Fortune 500 systems,
-    now channeled into graduate-level AI and machine learning. I build reliable systems
-    and understand how intelligent ones evolve.
-  </p>
-  <div class="hero-tags">
-    <span class="tag">AI &amp; ML Fundamentals</span>
-    <span class="tag">Mainframe · z/OS · COBOL</span>
-    <span class="tag">QA Engineering · TCS · USAA</span>
-    <span class="tag">Python · SQL · Java</span>
-    <span class="tag">Deep Learning · LLMs</span>
-    <span class="tag">Design Thinking</span>
-  </div>
-  <div class="hero-actions">
-    <a href="#artifact" class="btn btn-primary"><i class="fa-solid fa-timeline"></i> View Artifact 1</a>
-    <a href="#about" class="btn btn-outline"><i class="fa-solid fa-user"></i> About Me</a>
-  </div>
-  <div class="stats-bar">
-    <div class="stat-item"><div class="stat-num">4</div><div class="stat-label">Yrs Exp.</div></div>
-    <div class="stat-item"><div class="stat-num">20%</div><div class="stat-label">Defect Lift</div></div>
-    <div class="stat-item"><div class="stat-num">90%</div><div class="stat-label">Env Uptime</div></div>
-    <div class="stat-item"><div class="stat-num">M.S.</div><div class="stat-label">AI/ML</div></div>
+<div class="hero-wrap">
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-eyebrow"><i class="fa-solid fa-graduation-cap"></i> M.S. AI &amp; ML · Indiana Wesleyan University</div>
+      <h1>QA Engineer<br />Becoming an<br /><span>AI/ML Practitioner</span></h1>
+      <p class="hero-sub">
+        4 years of production-grade systems engineering at TCS, serving USAA —
+        now channeling that rigor into graduate-level machine learning and intelligent systems.
+      </p>
+      <div class="hero-actions">
+        <a href="#artifact" class="btn btn-primary"><i class="fa-solid fa-timeline"></i> View Artifact 1</a>
+        <a href="#about" class="btn btn-ghost"><i class="fa-solid fa-user"></i> About Me</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-avatar">SK</div>
+      <div class="hero-card-name">Sai Sri Gottapu</div>
+      <div class="hero-card-role">Systems Engineer → AI/ML Student</div>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="hero-stat-num">4</div><div class="hero-stat-label">Yrs Exp</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">20%</div><div class="hero-stat-label">Defect Lift</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">90%</div><div class="hero-stat-label">Env Uptime</div></div>
+        <div class="hero-stat"><div class="hero-stat-num">M.S.</div><div class="hero-stat-label">In Progress</div></div>
+      </div>
+      <div class="hero-tags">
+        <span class="tag">COBOL · z/OS</span>
+        <span class="tag">Python · SQL</span>
+        <span class="tag">Deep Learning</span>
+        <span class="tag">TCS · USAA</span>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- MAIN -->
-<div class="container">
-  <div class="section-divider"></div>
+<!-- PAGE BODY -->
+<div class="page">
+  <div class="divider"></div>
 
   <!-- ARTIFACT 1 -->
   <div class="section" id="artifact">
-    <div class="section-header">
-      <div class="section-icon"><i class="fa-solid fa-timeline" style="color:var(--accent);"></i></div>
+    <div class="section-label">
+      <div class="section-label-icon"><i class="fa-solid fa-timeline"></i></div>
       <h2>AI &amp; ML Timeline</h2>
-      <span style="margin-left:auto; background:rgba(108,99,255,0.12); border:1px solid rgba(108,99,255,0.35); color:var(--accent); font-size:0.72rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:3px 12px; border-radius:999px;">Artifact 1</span>
+      <span class="artifact-pill">Artifact 1</span>
     </div>
 
-    <div class="project-card">
-      <div class="project-header">
-        <div class="project-title-row">
-          <div class="project-title">The Evolution of AI: 1950–2026</div>
+    <div class="artifact-wrap">
+      <div class="artifact-header">
+        <div class="artifact-title-row">
+          <div class="artifact-title">The Evolution of AI: 1950–2026</div>
+          <span class="live-pill"><i class="fa-solid fa-circle" style="font-size:0.5rem;"></i> Course Artifact</span>
         </div>
-        <div class="project-subtitle">
-          AI &amp; ML Timeline · Machine Learning Fundamentals · Summer 2026 · Tool: Canva
-        </div>
-        <div class="project-tags">
-          <span class="tag">AI History</span>
-          <span class="tag">Deep Learning</span>
-          <span class="tag">Canva</span>
-          <span class="tag">Visual Timeline</span>
-          <span class="tag">Generative AI</span>
-          <span class="tag">Research</span>
+        <div class="artifact-sub">AI &amp; ML Timelines · Machine Learning Fundamentals · Summer 2026 · Visualized with Canva</div>
+        <div class="tag-row">
+          <span class="tag-accent">AI History</span>
+          <span class="tag-accent">Deep Learning</span>
+          <span class="tag-accent">Canva</span>
+          <span class="tag-accent">Visual Timeline</span>
+          <span class="tag-accent">Generative AI</span>
+          <span class="tag-accent">Research</span>
         </div>
       </div>
 
-      <div class="project-body">
+      <div class="artifact-body">
 
         <!-- AUDIENCE -->
-        <div class="subsection">
-          <div class="subsection-title">Target Audience</div>
-          <p>
-            This artifact is designed for <strong style="color:var(--text)">technical hiring managers, AI/ML team leads, and graduate faculty</strong>
-            who want to assess a candidate's foundational understanding of how AI has evolved
-            and their ability to communicate complex history clearly. It also serves peers and learners
-            entering the AI/ML field who benefit from a structured historical context.
+        <div>
+          <div class="sub-title"><i class="fa-solid fa-users"></i> Target Audience</div>
+          <p class="prose">
+            This artifact is tailored for <strong style="color:var(--text)">technical hiring managers, AI/ML faculty, and graduate program evaluators</strong>
+            assessing a candidate's foundational understanding of how AI evolved and their ability to communicate that history clearly.
+            It also serves peers and learners entering the AI/ML field who benefit from structured historical context.
           </p>
         </div>
 
-        <!-- TIMELINE IMAGE -->
-        <div class="subsection">
-          <div class="subsection-title">Visual Timeline</div>
-          <div class="timeline-display">
-            <div style="background:var(--surface2); padding:2.5rem 2rem; text-align:center; border-bottom:1px solid var(--border);">
-              <div style="font-size:0.75rem; font-weight:700; text-transform:uppercase; letter-spacing:0.12em; color:var(--accent2); margin-bottom:0.75rem;">Visual Timeline · Canva</div>
-              <div style="font-size:1.3rem; font-weight:800; color:var(--text); margin-bottom:0.5rem;">The Evolution of AI: 1950–2026</div>
-              <div style="font-size:0.82rem; color:var(--text-dim); margin-bottom:1.5rem;">From Turing to Generative AI</div>
-              <div style="display:flex; justify-content:center; flex-wrap:wrap; gap:0.5rem; font-size:0.72rem;">
-                <span style="background:rgba(108,99,255,0.15);border:1px solid rgba(108,99,255,0.3);color:var(--accent);padding:4px 10px;border-radius:6px;">1950 Turing Test</span>
-                <span style="background:rgba(108,99,255,0.1);border:1px solid var(--border);color:var(--text-muted);padding:4px 10px;border-radius:6px;">1956 AI Founded</span>
-                <span style="background:rgba(108,99,255,0.1);border:1px solid var(--border);color:var(--text-muted);padding:4px 10px;border-radius:6px;">1974 AI Winter 1</span>
-                <span style="background:rgba(108,99,255,0.1);border:1px solid var(--border);color:var(--text-muted);padding:4px 10px;border-radius:6px;">1980s Expert Systems</span>
-                <span style="background:rgba(108,99,255,0.1);border:1px solid var(--border);color:var(--text-muted);padding:4px 10px;border-radius:6px;">1987 AI Winter 2</span>
-                <span style="background:rgba(108,99,255,0.1);border:1px solid var(--border);color:var(--text-muted);padding:4px 10px;border-radius:6px;">1997 Deep Blue</span>
-                <span style="background:rgba(0,212,170,0.12);border:1px solid rgba(0,212,170,0.3);color:var(--accent2);padding:4px 10px;border-radius:6px;">2012 AlexNet</span>
-                <span style="background:rgba(0,212,170,0.1);border:1px solid var(--border);color:var(--text-muted);padding:4px 10px;border-radius:6px;">2016 AlphaGo</span>
-                <span style="background:rgba(0,212,170,0.15);border:1px solid rgba(0,212,170,0.3);color:var(--accent2);padding:4px 10px;border-radius:6px;">2022 ChatGPT</span>
-                <span style="background:rgba(0,212,170,0.1);border:1px solid var(--border);color:var(--text-muted);padding:4px 10px;border-radius:6px;">2024 EU AI Act</span>
-              </div>
+        <!-- VISUAL TIMELINE -->
+        <div>
+          <div class="sub-title"><i class="fa-solid fa-chart-gantt"></i> Visual Timeline</div>
+          <div class="timeline-visual">
+            <div class="timeline-visual-title">The Evolution of AI: 1950 – 2026</div>
+            <div class="timeline-visual-sub">From Turing to Generative AI &nbsp;·&nbsp; Created in Canva</div>
+            <div class="timeline-chips">
+              <div class="t-chip highlight"><span class="t-year">1950</span><span class="t-event">Turing Test</span></div>
+              <div class="t-chip"><span class="t-year">1956</span><span class="t-event">AI Founded</span></div>
+              <div class="t-chip"><span class="t-year">1957</span><span class="t-event">Perceptron</span></div>
+              <div class="t-chip"><span class="t-year">1965</span><span class="t-event">ELIZA</span></div>
+              <div class="t-chip" style="background:#fef9c3;border-color:#fde047;"><span class="t-year" style="color:#92400e;">1974</span><span class="t-event" style="color:#92400e;">AI Winter 1</span></div>
+              <div class="t-chip"><span class="t-year">1980s</span><span class="t-event">Expert Sys.</span></div>
+              <div class="t-chip" style="background:#fef9c3;border-color:#fde047;"><span class="t-year" style="color:#92400e;">1987</span><span class="t-event" style="color:#92400e;">AI Winter 2</span></div>
+              <div class="t-chip"><span class="t-year">1997</span><span class="t-event">Deep Blue</span></div>
+              <div class="t-chip highlight2"><span class="t-year">2012</span><span class="t-event">AlexNet</span></div>
+              <div class="t-chip highlight2"><span class="t-year">2016</span><span class="t-event">AlphaGo</span></div>
+              <div class="t-chip highlight"><span class="t-year">2022</span><span class="t-event">ChatGPT</span></div>
+              <div class="t-chip"><span class="t-year">2024</span><span class="t-event">EU AI Act</span></div>
             </div>
-            <div class="timeline-caption">Created in Canva · Machine Learning Fundamentals · Indiana Wesleyan University · Summer 2026</div>
           </div>
         </div>
 
-        <!-- KEY MILESTONES -->
-        <div class="subsection">
-          <div class="subsection-title">Key Milestones</div>
-          <div class="era-grid">
-            <div class="era-card">
-              <div class="era-year">1950</div>
-              <div class="era-title">Turing Test</div>
-              <div class="era-desc">Alan Turing proposes the "imitation game" — the philosophical foundation of machine intelligence.</div>
+        <!-- MILESTONES -->
+        <div>
+          <div class="sub-title"><i class="fa-solid fa-flag"></i> Key Milestones</div>
+          <div class="milestone-grid">
+            <div class="milestone">
+              <div class="m-year">1950</div>
+              <div class="m-title">Turing Test</div>
+              <div class="m-desc">Alan Turing proposes the "imitation game" — the philosophical foundation of machine intelligence.</div>
             </div>
-            <div class="era-card">
-              <div class="era-year">1956</div>
-              <div class="era-title">AI Founded</div>
-              <div class="era-desc">Dartmouth Conference coins "Artificial Intelligence" as a formal research discipline.</div>
+            <div class="milestone">
+              <div class="m-year">1956</div>
+              <div class="m-title">AI Founded</div>
+              <div class="m-desc">Dartmouth Conference formally names the field "Artificial Intelligence."</div>
             </div>
-            <div class="era-card">
-              <div class="era-year">1974 &amp; 1987</div>
-              <div class="era-title">AI Winters</div>
-              <div class="era-desc">Two periods of collapsed funding and interest when AI failed to meet unrealistic expectations.</div>
+            <div class="milestone">
+              <div class="m-year">1974 &amp; 1987</div>
+              <div class="m-title">AI Winters</div>
+              <div class="m-desc">Two funding collapses when AI failed to meet unrealistic expectations — showing AI needs both ideas and infrastructure.</div>
             </div>
-            <div class="era-card">
-              <div class="era-year">1980s</div>
-              <div class="era-title">Expert Systems</div>
-              <div class="era-desc">MYCIN and XCON demonstrated the first commercially useful AI for medicine and business.</div>
+            <div class="milestone">
+              <div class="m-year">1980s</div>
+              <div class="m-title">Expert Systems</div>
+              <div class="m-desc">MYCIN and XCON — the first commercially useful AI for medicine and business decision-making.</div>
             </div>
-            <div class="era-card">
-              <div class="era-year">1997</div>
-              <div class="era-title">Deep Blue</div>
-              <div class="era-desc">IBM defeats chess world champion Kasparov — AI proves strategic-level performance.</div>
+            <div class="milestone">
+              <div class="m-year">1997</div>
+              <div class="m-title">Deep Blue</div>
+              <div class="m-desc">IBM defeats chess world champion Kasparov, proving AI's strategic-level performance.</div>
             </div>
-            <div class="era-card">
-              <div class="era-year">2012</div>
-              <div class="era-title">AlexNet</div>
-              <div class="era-desc">GPU-powered deep learning wins ImageNet with 15.3% top-5 error rate — the modern AI era begins.</div>
+            <div class="milestone">
+              <div class="m-year">2012</div>
+              <div class="m-title">AlexNet</div>
+              <div class="m-desc">GPU-powered deep learning wins ImageNet at 15.3% error rate — the modern AI era begins.</div>
             </div>
-            <div class="era-card">
-              <div class="era-year">2016</div>
-              <div class="era-title">AlphaGo</div>
-              <div class="era-desc">DeepMind defeats Go champion Lee Sedol — reinforcement learning hits a new frontier.</div>
+            <div class="milestone">
+              <div class="m-year">2016</div>
+              <div class="m-title">AlphaGo</div>
+              <div class="m-desc">DeepMind defeats Go champion Lee Sedol — reinforcement learning hits a new frontier.</div>
             </div>
-            <div class="era-card">
-              <div class="era-year">2022</div>
-              <div class="era-title">ChatGPT</div>
-              <div class="era-desc">OpenAI launches the most widely adopted AI product in history, accelerating the LLM era.</div>
+            <div class="milestone">
+              <div class="m-year">2022</div>
+              <div class="m-title">ChatGPT</div>
+              <div class="m-desc">OpenAI launches the most widely adopted AI product in history, accelerating the LLM era.</div>
             </div>
-            <div class="era-card">
-              <div class="era-year">2024</div>
-              <div class="era-title">EU AI Act</div>
-              <div class="era-desc">First comprehensive AI regulation passed — responsible AI development becomes a legal standard.</div>
+            <div class="milestone">
+              <div class="m-year">2024</div>
+              <div class="m-title">EU AI Act</div>
+              <div class="m-desc">First comprehensive AI regulation — responsible innovation becomes a legal standard.</div>
             </div>
           </div>
         </div>
 
         <!-- ANALYSIS -->
-        <div class="subsection">
-          <div class="subsection-title">Analysis</div>
-          <p style="margin-bottom:0.75rem;">
-            AI did not develop in a straight line. Three forces drove every major breakthrough: <strong style="color:var(--text)">big data, GPU hardware, and algorithmic advances</strong>.
-            The 2012 AlexNet moment was the convergence of all three — ImageNet's scale, NVIDIA GPUs, and deep convolutional networks.
-            Before that inflection point, two AI winters showed that ambition without infrastructure produces stagnation.
+        <div>
+          <div class="sub-title"><i class="fa-solid fa-magnifying-glass-chart"></i> Analysis</div>
+          <p class="prose" style="margin-bottom:0.75rem;">
+            AI did not develop in a straight line. Three forces drove every major breakthrough:
+            <strong style="color:var(--text)">big data, GPU hardware, and algorithmic advances.</strong>
+            The 2012 AlexNet moment was the convergence of all three. Before it, two AI winters demonstrated
+            that ambition without infrastructure produces stagnation. Cloud platforms like AWS, Google Cloud,
+            and Azure then made large-scale training accessible without requiring supercomputers.
           </p>
-          <p>
-            The post-2012 boom was further enabled by cloud computing platforms (AWS, Google Cloud, Azure) making large-scale model training accessible
-            without owning supercomputers. Key players — OpenAI, Google DeepMind, NVIDIA, Anthropic, Meta, and Microsoft — each contributed different
-            layers of the stack. The EU AI Act in 2024 marks the first time regulation has caught up, signaling that responsible AI is now both an ethical
-            expectation and a legal one.
+          <p class="prose">
+            Key players — OpenAI, Google DeepMind, NVIDIA, Anthropic, Meta, and Microsoft — each contributed
+            a different layer of the stack. The EU AI Act in 2024 marks the first time regulation has caught up,
+            signaling that responsible AI is now both an ethical expectation and a legal one.
           </p>
         </div>
 
         <!-- KEY INSIGHT -->
-        <div class="subsection">
-          <div class="subsection-title">Key Insight</div>
-          <div class="insight">
-            <p>
-              "AI progress depends not only on ideas but on funding, computing power, and realistic expectations.
-              The AI winters were not failures of imagination — they were failures of infrastructure readiness.
-              Every modern breakthrough traces back to the moment hardware finally caught up with the vision."
-            </p>
+        <div>
+          <div class="sub-title"><i class="fa-solid fa-lightbulb"></i> Key Insight</div>
+          <div class="callout">
+            <p>"AI progress depends not only on ideas but on funding, computing power, and realistic expectations.
+            The AI winters were not failures of imagination — they were failures of infrastructure readiness.
+            Every modern breakthrough traces back to the moment hardware finally caught up with the vision."</p>
           </div>
         </div>
 
         <!-- REFLECTION -->
-        <div class="subsection">
-          <div class="subsection-title">My Reflection</div>
-          <div class="insight" style="border-left-color: var(--accent2);">
-            <p style="font-style:normal; color:var(--text-muted); font-size:0.9rem; line-height:1.8;">
+        <div>
+          <div class="sub-title"><i class="fa-solid fa-comment-dots"></i> My Reflection</div>
+          <div class="callout-green">
+            <p>
               Building this timeline shifted how I think about the technology I work with every day.
               As a QA engineer on mainframe systems, I was already working with infrastructure built in an era before modern AI.
-              Mapping out the full arc from the Turing Test to ChatGPT helped me see that the tools emerging now are not replacements
-              for rigorous engineering, they are extensions of it.
-              What surprised me most was the AI winters: periods where the ideas were right but the hardware and funding were not ready.
+              Mapping the full arc from the Turing Test to ChatGPT helped me see that the tools emerging now are not replacements
+              for rigorous engineering: they are extensions of it.
+              What surprised me most was the AI winters. Periods where the ideas were right but the hardware and funding were not ready.
               That pattern resonates with QA experience too. Good design means nothing without the infrastructure to support it.
-              This timeline gave me a clearer mental model of where I am starting my AI/ML journey and what it takes to build things that actually last.
+              This timeline gave me a clearer mental model of where I am starting my AI/ML journey and what it takes to build things that last.
             </p>
           </div>
         </div>
 
-        <!-- TOOLS USED -->
-        <div class="subsection">
-          <div class="subsection-title">Tools Used</div>
+        <!-- TOOLS -->
+        <div>
+          <div class="sub-title"><i class="fa-solid fa-wrench"></i> Tools Used</div>
           <div style="display:flex; flex-wrap:wrap; gap:0.5rem;">
-            <span class="tag"><i class="fa-solid fa-pen-nib"></i> Canva (Visual Design)</span>
-            <span class="tag"><i class="fa-solid fa-magnifying-glass"></i> Perplexity AI (Research)</span>
-            <span class="tag"><i class="fa-solid fa-book"></i> Academic References</span>
-            <span class="tag"><i class="fa-solid fa-brain"></i> Course: AIML-500</span>
+            <span class="tag-accent"><i class="fa-solid fa-pen-nib"></i> Canva</span>
+            <span class="tag-accent"><i class="fa-solid fa-magnifying-glass"></i> Perplexity AI</span>
+            <span class="tag-accent"><i class="fa-solid fa-book"></i> Academic References</span>
+            <span class="tag-accent"><i class="fa-solid fa-graduation-cap"></i> AIML-500</span>
           </div>
         </div>
 
         <!-- REFERENCES -->
-        <div class="subsection">
-          <div class="subsection-title">References</div>
-          <ul style="color:var(--text-dim); font-size:0.82rem; line-height:2; padding-left:1.2rem;">
+        <div>
+          <div class="sub-title"><i class="fa-solid fa-book-open"></i> References</div>
+          <ul class="ref-list">
             <li>Turing, A. M. (1950). Computing machinery and intelligence. <em>Mind, 59</em>(236), 433–460.</li>
             <li>Dartmouth Workshop. (1956). The Dartmouth summer research project on artificial intelligence.</li>
             <li>Krizhevsky, A., Sutskever, I., &amp; Hinton, G. E. (2012). ImageNet classification with deep convolutional neural networks. <em>NeurIPS.</em></li>
@@ -507,150 +578,150 @@
           </ul>
         </div>
 
-      </div><!-- /project-body -->
-    </div><!-- /project-card -->
-  </div><!-- /artifact -->
+      </div>
+    </div>
+  </div>
 
   <!-- SKILLS -->
   <div class="section" id="skills">
-    <div class="section-header">
-      <div class="section-icon"><i class="fa-solid fa-bolt" style="color:var(--accent);"></i></div>
+    <div class="section-label">
+      <div class="section-label-icon"><i class="fa-solid fa-bolt"></i></div>
       <h2>Technical Skills</h2>
     </div>
     <div class="skills-grid">
-      <div class="skill-item">
-        <div class="skill-icon">🧠</div>
-        <div class="skill-cat">AI / ML</div>
-        <div class="skill-name">ML Fundamentals · Deep Learning · NLP</div>
-        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:72%"></div></div>
+      <div class="skill-card">
+        <div class="sk-icon">🧠</div>
+        <div class="sk-cat">AI / ML</div>
+        <div class="sk-name">ML Fundamentals · Deep Learning · NLP</div>
+        <div class="sk-bar"><div class="sk-fill" style="width:72%"></div></div>
       </div>
-      <div class="skill-item">
-        <div class="skill-icon">🖥️</div>
-        <div class="skill-cat">Mainframe</div>
-        <div class="skill-name">COBOL · JCL · DB2 · CICS · z/OS</div>
-        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:92%"></div></div>
+      <div class="skill-card">
+        <div class="sk-icon">🖥️</div>
+        <div class="sk-cat">Mainframe</div>
+        <div class="sk-name">COBOL · JCL · DB2 · CICS · z/OS · MQ</div>
+        <div class="sk-bar"><div class="sk-fill" style="width:93%"></div></div>
       </div>
-      <div class="skill-item">
-        <div class="skill-icon">🔍</div>
-        <div class="skill-cat">QA Engineering</div>
-        <div class="skill-name">Functional · Integration · Regression Testing</div>
-        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:90%"></div></div>
+      <div class="skill-card">
+        <div class="sk-icon">🔍</div>
+        <div class="sk-cat">QA Engineering</div>
+        <div class="sk-name">Functional · Integration · Regression · API</div>
+        <div class="sk-bar"><div class="sk-fill" style="width:90%"></div></div>
       </div>
-      <div class="skill-item">
-        <div class="skill-icon">🐍</div>
-        <div class="skill-cat">Programming</div>
-        <div class="skill-name">Python · SQL · Java · Spring Boot</div>
-        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:78%"></div></div>
+      <div class="skill-card">
+        <div class="sk-icon">🐍</div>
+        <div class="sk-cat">Programming</div>
+        <div class="sk-name">Python · SQL · Java · Spring Boot · React</div>
+        <div class="sk-bar"><div class="sk-fill" style="width:78%"></div></div>
       </div>
-      <div class="skill-item">
-        <div class="skill-icon">☁️</div>
-        <div class="skill-cat">Observability</div>
-        <div class="skill-name">Splunk · Kibana · Datadog · Postman</div>
-        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:80%"></div></div>
+      <div class="skill-card">
+        <div class="sk-icon">📡</div>
+        <div class="sk-cat">Observability</div>
+        <div class="sk-name">Splunk · Kibana · Datadog · Postman</div>
+        <div class="sk-bar"><div class="sk-fill" style="width:80%"></div></div>
       </div>
-      <div class="skill-item">
-        <div class="skill-icon">📋</div>
-        <div class="skill-cat">Process</div>
-        <div class="skill-name">Agile · Scrum · SDLC · STLC</div>
-        <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:88%"></div></div>
+      <div class="skill-card">
+        <div class="sk-icon">📋</div>
+        <div class="sk-cat">Process</div>
+        <div class="sk-name">Agile · Scrum · SDLC · STLC · JIRA</div>
+        <div class="sk-bar"><div class="sk-fill" style="width:88%"></div></div>
       </div>
     </div>
   </div>
 
   <!-- ABOUT -->
   <div class="section" id="about">
-    <div class="section-header">
-      <div class="section-icon"><i class="fa-solid fa-user" style="color:var(--accent);"></i></div>
+    <div class="section-label">
+      <div class="section-label-icon"><i class="fa-solid fa-user"></i></div>
       <h2>About Me</h2>
     </div>
+    <div class="about-grid">
 
-    <!-- VALUE STATEMENT -->
-    <div class="card" style="margin-bottom:1rem; border-left:3px solid var(--accent);">
-      <div style="font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--accent); margin-bottom:0.75rem;">Personal Value Proposition</div>
-      <p style="color:var(--text); font-size:0.95rem; font-weight:500; line-height:1.7; margin-bottom:0.75rem;">
-        A disciplined QA and systems engineer transitioning into AI/ML with a strong foundation in
-        production reliability, defect analysis, and enterprise software delivery. I bring the rigor
-        of high-stakes mainframe engineering to machine learning, where precision and systematic testing
-        are just as critical as model accuracy.
-      </p>
-      <div style="font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--accent2); margin-bottom:0.5rem;">Target Audience</div>
-      <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.65;">
-        This portfolio is designed for <strong style="color:var(--text)">technical hiring managers, AI/ML faculty, and graduate program evaluators</strong>
-        assessing candidates who bring both engineering depth and emerging AI/ML capability.
-      </p>
-    </div>
+      <div class="info-card full accent-border">
+        <div class="info-label">Personal Value Proposition</div>
+        <p style="color:var(--text); font-size:0.95rem; font-weight:600; line-height:1.7; margin-bottom:0.65rem;">
+          A disciplined QA and systems engineer transitioning into AI/ML — bringing the rigour of
+          high-stakes mainframe engineering to machine learning, where precision and systematic testing
+          are just as critical as model accuracy.
+        </p>
+        <div class="info-label-green" style="margin-top:0.75rem;">Target Audience</div>
+        <p style="color:var(--text-muted); font-size:0.88rem; line-height:1.65;">
+          This portfolio is designed for <strong style="color:var(--text)">technical hiring managers, AI/ML faculty, and graduate program evaluators</strong>
+          assessing candidates who bring both deep engineering experience and emerging AI/ML capability.
+        </p>
+      </div>
 
-    <!-- BIO -->
-    <div class="card" style="margin-bottom:1rem;">
-      <p style="color:var(--text-muted); font-size:0.92rem; margin-bottom:0.9rem;">
-        I'm <strong style="color:var(--text)">SaiSri Katragadda</strong> — a Systems Engineer at Tata Consultancy Services with 4 years of
-        experience delivering production-grade QA engineering for <strong style="color:var(--text)">USAA</strong>, a Fortune 500 insurance company
-        serving active and retired US Armed Forces members. My work centered on mainframe application testing
-        (z/OS, COBOL, DB2, CICS, JCL, MQ), test environment management, and Agile delivery across offshore/onshore teams.
-      </p>
-      <p style="color:var(--text-muted); font-size:0.92rem; margin-bottom:0.9rem;">
-        Key achievements include a <strong style="color:var(--text)">20% improvement in defect detection rate</strong> through cross-functional QA coordination,
-        maintaining <strong style="color:var(--text)">90% test environment uptime</strong> across z/OS regions, and contributing to an enterprise migration
-        from legacy C++/JSP to React and Java Spring Boot microservices.
-      </p>
-      <p style="color:var(--text-muted); font-size:0.92rem;">
-        I am now pursuing a <strong style="color:var(--text)">Master's degree in AI and Machine Learning</strong>, bridging my deep engineering background
-        with graduate-level study in intelligent systems, deep learning, and responsible AI development.
-      </p>
-    </div>
-
-    <!-- EDUCATION & CERTS -->
-    <div class="card">
-      <div style="font-size:0.78rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--accent); margin-bottom:1rem;">Education</div>
-      <div class="cert-grid">
-        <div class="cert-item">
-          <span style="font-size:1.2rem;">🎓</span>
+      <div class="info-card">
+        <div class="info-label">Professional Background</div>
+        <div class="exp-card">
+          <div class="exp-icon"><i class="fa-solid fa-building"></i></div>
           <div>
-            <div class="cert-name">M.S. Artificial Intelligence &amp; ML</div>
-            <div class="cert-sub">Indiana Wesleyan University · In Progress</div>
+            <div class="exp-title">Systems Engineer — TCS</div>
+            <div class="exp-sub">Client: USAA · Jan 2022 – April 2025 · Columbus, Ohio</div>
           </div>
         </div>
-        <div class="cert-item">
-          <span style="font-size:1.2rem;">🏢</span>
+        <div class="exp-card">
+          <div class="exp-icon"><i class="fa-solid fa-server"></i></div>
           <div>
-            <div class="cert-name">Systems Engineer — TCS</div>
-            <div class="cert-sub">Client: USAA · Jan 2022 – April 2025</div>
+            <div class="exp-title">QA &amp; Mainframe Engineer</div>
+            <div class="exp-sub">z/OS, COBOL, DB2, CICS, JCL, MQ · Fortune 500</div>
+          </div>
+        </div>
+        <div class="exp-card">
+          <div class="exp-icon"><i class="fa-solid fa-arrow-trend-up"></i></div>
+          <div>
+            <div class="exp-title">20% Defect Detection Improvement</div>
+            <div class="exp-sub">Cross-functional offshore/onshore coordination</div>
           </div>
         </div>
       </div>
+
+      <div class="info-card">
+        <div class="info-label">Education</div>
+        <div class="exp-card">
+          <div class="exp-icon" style="background:#dcfce7; color:#059669;"><i class="fa-solid fa-graduation-cap"></i></div>
+          <div>
+            <div class="exp-title">M.S. Artificial Intelligence &amp; ML</div>
+            <div class="exp-sub">Indiana Wesleyan University · In Progress · 2026</div>
+          </div>
+        </div>
+        <div class="exp-card">
+          <div class="exp-icon" style="background:#dcfce7; color:#059669;"><i class="fa-solid fa-book"></i></div>
+          <div>
+            <div class="exp-title">AIML-500 · Machine Learning Fundamentals</div>
+            <div class="exp-sub">Current Course · Summer 2026</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
   <!-- CONTACT -->
   <div class="section" id="contact">
-    <div class="section-header">
-      <div class="section-icon"><i class="fa-solid fa-envelope" style="color:var(--accent);"></i></div>
+    <div class="section-label">
+      <div class="section-label-icon"><i class="fa-solid fa-envelope"></i></div>
       <h2>Contact</h2>
     </div>
-    <div class="card">
-      <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom:1.25rem;">
-        Open to AI/ML research collaborations, graduate networking, and QA/systems engineering roles.
-        Feel free to reach out.
-      </p>
-      <div style="display:flex; flex-wrap:wrap; gap:0.75rem;">
-        <span style="display:inline-flex; align-items:center; gap:0.5rem; background:var(--surface2); border:1px solid var(--border); color:var(--text-muted); padding:9px 18px; border-radius:8px; font-size:0.88rem;">
-          <i class="fa-solid fa-location-dot"></i> Hyderabad, India
-        </span>
-        <a href="https://www.linkedin.com/in/saisri-katragadda" target="_blank"
-           style="display:inline-flex; align-items:center; gap:0.5rem; background:var(--surface2); border:1px solid var(--border); color:var(--text); text-decoration:none; padding:9px 18px; border-radius:8px; font-size:0.88rem; font-weight:500;"
-           onmouseover="this.style.borderColor='var(--accent2)'" onmouseout="this.style.borderColor='var(--border)'">
+    <div class="contact-card">
+      <div class="contact-left">
+        <h3>Let's Connect</h3>
+        <p>Open to AI/ML research collaborations, graduate networking, and QA/systems engineering opportunities.</p>
+      </div>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/saisri-gottapu" target="_blank" class="contact-btn">
           <i class="fa-brands fa-linkedin"></i> LinkedIn
         </a>
+        <span class="contact-btn" style="cursor:default;">
+          <i class="fa-solid fa-location-dot"></i> Columbus, Ohio
+        </span>
       </div>
     </div>
   </div>
 
-</div><!-- /container -->
+</div><!-- /page -->
 
 <footer>
-  <p>
-    SaiSri Katragadda · AIML-500 Professional Portfolio · Indiana Wesleyan University · 2026
-  </p>
+  Sai Sri Gottapu &nbsp;·&nbsp; AIML-500 Professional Portfolio &nbsp;·&nbsp; Indiana Wesleyan University &nbsp;·&nbsp; 2026
 </footer>
 
 </body>
