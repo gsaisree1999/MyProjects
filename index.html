@@ -336,6 +336,36 @@
     }
     .ref-list li::before { content: '↗'; position: absolute; left: 0; color: var(--accent); }
 
+    /* PROJECTS */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+    .project-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: all 0.18s; box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+    }
+    .project-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 8px 28px rgba(79,70,229,0.12); }
+    .project-thumb {
+      height: 116px; display: flex; align-items: center; justify-content: center;
+      font-size: 2.2rem; color: #fff; border-bottom: 1px solid var(--border);
+    }
+    .project-thumb.indigo { background: linear-gradient(135deg, var(--accent), #7c3aed); }
+    .project-thumb.green  { background: linear-gradient(135deg, var(--accent2), #0d9488); }
+    .project-thumb.rose   { background: linear-gradient(135deg, var(--accent3), #be123c); }
+    .project-body { padding: 1.25rem 1.4rem 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
+    .project-title { font-size: 1.05rem; font-weight: 800; letter-spacing: -0.2px; }
+    .project-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; flex: 1; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .project-links { display: flex; gap: 0.5rem; margin-top: 0.4rem; }
+    .project-link {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      font-size: 0.78rem; font-weight: 700; text-decoration: none;
+      color: var(--accent); background: #ede9fe; padding: 5px 12px; border-radius: 8px; transition: all 0.15s;
+    }
+    .project-link:hover { background: var(--accent); color: #fff; }
+    .project-link.secondary { color: var(--accent2); background: #dcfce7; }
+    .project-link.secondary:hover { background: var(--accent2); color: #fff; }
+
     @media (max-width: 700px) {
       .hero { grid-template-columns: 1fr; }
       .hero-card { display: none; }
@@ -354,6 +384,7 @@
   </div>
   <div class="nav-links">
     <a href="#artifact"><i class="fa-solid fa-timeline"></i> Artifact 1</a>
+    <a href="#projects"><i class="fa-solid fa-diagram-project"></i> Projects</a>
     <a href="#skills"><i class="fa-solid fa-bolt"></i> Skills</a>
     <a href="#about"><i class="fa-solid fa-user"></i> About</a>
     <a href="#contact"><i class="fa-solid fa-envelope"></i> Contact</a>
@@ -593,6 +624,80 @@
         </div>
 
       </div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section" id="projects">
+    <div class="section-label">
+      <div class="section-label-icon"><i class="fa-solid fa-diagram-project"></i></div>
+      <h2>Selected Projects</h2>
+    </div>
+
+    <!-- EDIT: replace the three cards below with your real projects.
+         Each card: .project-thumb class (indigo|green|rose) + icon,
+         .project-title, .project-desc, .project-tags, and the two
+         .project-link anchors (Repo / Live) — set href="#" until real URLs exist. -->
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-thumb indigo"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="project-body">
+          <div class="project-title">QA Defect-Detection Framework</div>
+          <div class="project-desc">
+            A regression and integration testing framework built on USAA mainframe systems (z/OS, COBOL, DB2) that lifted defect
+            detection by ~20% through structured cross-team test orchestration.
+          </div>
+          <div class="project-tags">
+            <span class="tag-accent">Mainframe</span>
+            <span class="tag-accent">QA</span>
+            <span class="tag-accent">JCL</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link"><i class="fa-brands fa-github"></i> Repo</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-thumb green"><i class="fa-solid fa-brain"></i></div>
+        <div class="project-body">
+          <div class="project-title">ML Fundamentals Capstone</div>
+          <div class="project-desc">
+            End-to-end machine learning project for AIML-500 — from data preparation and model training to evaluation and
+            deployment. Details coming as the course progresses.
+          </div>
+          <div class="project-tags">
+            <span class="tag-accent">Python</span>
+            <span class="tag-accent">Scikit-learn</span>
+            <span class="tag-accent">In Progress</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link"><i class="fa-brands fa-github"></i> Repo</a>
+            <a href="#" class="project-link secondary"><i class="fa-solid fa-arrow-up-right-from-square"></i> Live</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-thumb rose"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <div class="project-body">
+          <div class="project-title">Generative AI Explorer</div>
+          <div class="project-desc">
+            A hands-on playground experimenting with LLM prompting, retrieval-augmented generation, and responsible-AI guardrails
+            — applying lessons from the EU AI Act to real prototypes.
+          </div>
+          <div class="project-tags">
+            <span class="tag-accent">LLM</span>
+            <span class="tag-accent">RAG</span>
+            <span class="tag-accent">Experiment</span>
+          </div>
+          <div class="project-links">
+            <a href="#" class="project-link"><i class="fa-brands fa-github"></i> Repo</a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 
