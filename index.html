@@ -366,11 +366,65 @@
     .project-link.secondary { color: var(--accent2); background: #dcfce7; }
     .project-link.secondary:hover { background: var(--accent2); color: #fff; }
 
+    /* ARTIFACT 2 — ML vs DL */
+    .ml-dl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .ml-dl-col {
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.5rem; background: var(--surface);
+    }
+    .ml-dl-col.indigo { border-top: 4px solid var(--accent); }
+    .ml-dl-col.green  { border-top: 4px solid var(--accent2); }
+    .ml-dl-head { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.8rem; }
+    .ml-dl-badge {
+      width: 42px; height: 42px; border-radius: 12px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 1.15rem; color: #fff;
+    }
+    .ml-dl-col.indigo .ml-dl-badge { background: var(--accent); }
+    .ml-dl-col.green  .ml-dl-badge { background: var(--accent2); }
+    .ml-dl-title { font-size: 1.05rem; font-weight: 800; }
+    .ml-dl-sub { font-size: 0.74rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; }
+    .ml-dl-body { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; }
+    .ml-dl-traits { list-style: none; margin-top: 0.9rem; display: flex; flex-direction: column; gap: 0.45rem; }
+    .ml-dl-traits li { font-size: 0.8rem; color: var(--text); display: flex; align-items: flex-start; gap: 0.5rem; line-height: 1.5; }
+    .ml-dl-traits li i { color: var(--accent); margin-top: 0.15rem; font-size: 0.75rem; }
+    .ml-dl-col.green .ml-dl-traits li i { color: var(--accent2); }
+
+    .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .case-card {
+      border: 1px solid var(--border); border-radius: var(--radius);
+      overflow: hidden; background: var(--surface); box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+    }
+    .case-head { padding: 1.1rem 1.3rem; display: flex; align-items: center; gap: 0.7rem; border-bottom: 1px solid var(--border); }
+    .case-head .case-ico { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: #fff; flex-shrink: 0; }
+    .case-head.ml .case-ico { background: var(--accent); }
+    .case-head.dl .case-ico { background: var(--accent2); }
+    .case-head h3 { font-size: 0.98rem; font-weight: 800; line-height: 1.2; }
+    .case-head .case-tag { font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); }
+    .case-body { padding: 1.2rem 1.3rem; display: flex; flex-direction: column; gap: 0.85rem; }
+    .case-line { font-size: 0.83rem; color: var(--text-muted); line-height: 1.65; }
+    .fit-box { border-radius: 10px; padding: 0.8rem 0.95rem; font-size: 0.8rem; line-height: 1.55; }
+    .fit-box.good { background: #f0fdf4; border-left: 3px solid var(--accent2); }
+    .fit-box.good .fb-h { color: #065f46; font-weight: 700; }
+    .fit-box.warn { background: #fef2f2; border-left: 3px solid var(--accent3); }
+    .fit-box.warn .fb-h { color: #9f1239; font-weight: 700; }
+
+    .a2-skills { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.6rem; }
+    .a2-skill {
+      display: flex; align-items: center; gap: 0.6rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px; padding: 0.7rem 0.9rem; font-size: 0.82rem; font-weight: 600;
+      transition: all 0.15s;
+    }
+    .a2-skill:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 4px 14px rgba(79,70,229,0.08); }
+    .a2-skill i { color: var(--accent); font-size: 0.95rem; width: 18px; text-align: center; }
+
     @media (max-width: 700px) {
       .hero { grid-template-columns: 1fr; }
       .hero-card { display: none; }
       .about-grid { grid-template-columns: 1fr; }
       .nav-links { display: none; }
+      .ml-dl-grid { grid-template-columns: 1fr; }
+      .case-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -384,6 +438,7 @@
   </div>
   <div class="nav-links">
     <a href="#artifact"><i class="fa-solid fa-timeline"></i> Artifact 1</a>
+    <a href="#artifact2"><i class="fa-solid fa-code-compare"></i> Artifact 2</a>
     <a href="#projects"><i class="fa-solid fa-diagram-project"></i> Projects</a>
     <a href="#skills"><i class="fa-solid fa-bolt"></i> Skills</a>
     <a href="#about"><i class="fa-solid fa-user"></i> About</a>
@@ -403,6 +458,7 @@
       </p>
       <div class="hero-actions">
         <a href="#artifact" class="btn btn-primary"><i class="fa-solid fa-timeline"></i> View Artifact 1</a>
+        <a href="#artifact2" class="btn btn-ghost"><i class="fa-solid fa-code-compare"></i> Artifact 2</a>
         <a href="#about" class="btn btn-ghost"><i class="fa-solid fa-user"></i> About Me</a>
       </div>
     </div>
@@ -627,6 +683,184 @@
     </div>
   </div>
 
+  <!-- ARTIFACT 2 -->
+  <div class="section" id="artifact2">
+    <div class="section-label">
+      <div class="section-label-icon"><i class="fa-solid fa-code-compare"></i></div>
+      <h2>Machine Learning vs. Deep Learning</h2>
+      <span class="artifact-pill">Artifact 2</span>
+    </div>
+
+    <div class="artifact-wrap">
+      <div class="artifact-header">
+        <div style="font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--accent); margin-bottom:0.6rem;">
+          <strong>Professional Portfolio · Artifact 2 – ML vs. DL Case Study</strong>
+        </div>
+        <div class="artifact-title-row">
+          <div class="artifact-title">Machine Learning vs. Deep Learning: A Real-World Case Study</div>
+          <span class="live-pill"><i class="fa-solid fa-circle" style="font-size:0.5rem;"></i> Course Artifact</span>
+        </div>
+        <div class="artifact-sub">AI/ML Case Study · Machine Learning Fundamentals (AIML-500) · Indiana Wesleyan University · Summer 2026</div>
+        <div class="tag-row">
+          <span class="tag-accent">Machine Learning</span>
+          <span class="tag-accent">Deep Learning</span>
+          <span class="tag-accent">Case Study</span>
+          <span class="tag-accent">Technical Writing</span>
+          <span class="tag-accent">Fraud Detection</span>
+          <span class="tag-accent">Computer Vision</span>
+        </div>
+      </div>
+
+      <div class="artifact-body">
+
+        <!-- OVERVIEW -->
+        <div style="background:#ede9fe; border:1px solid #c4b5fd; border-radius:10px; padding:1rem 1.25rem;">
+          <div style="font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--accent); margin-bottom:0.4rem;">Project Overview</div>
+          <p style="font-size:0.9rem; color:#3730a3; font-weight:500; line-height:1.7;">
+            This artifact was adapted from a class assignment in Machine Learning Fundamentals and revised for a professional audience.
+            It demonstrates a working understanding of how machine learning and deep learning differ — and, more importantly,
+            when each is the right tool for a real business problem.
+          </p>
+        </div>
+
+        <!-- ML vs DL AT A GLANCE -->
+        <div>
+          <div class="sub-title"><i class="fa-solid fa-scale-balanced"></i> ML vs. DL at a Glance</div>
+          <div class="ml-dl-grid">
+            <div class="ml-dl-col indigo">
+              <div class="ml-dl-head">
+                <div class="ml-dl-badge"><i class="fa-solid fa-sitemap"></i></div>
+                <div>
+                  <div class="ml-dl-title">Machine Learning</div>
+                  <div class="ml-dl-sub">Structured · Interpretable</div>
+                </div>
+              </div>
+              <div class="ml-dl-body">
+                Algorithms that learn patterns from data — decision trees, random forests, gradient boosting, SVMs.
+                They excel on tabular, structured inputs and stay explainable to auditors and stakeholders.
+              </div>
+              <ul class="ml-dl-traits">
+                <li><i class="fa-solid fa-check"></i> Trains on structured / tabular data</li>
+                <li><i class="fa-solid fa-check"></i> Feature engineering is explicit and auditable</li>
+                <li><i class="fa-solid fa-check"></i> Fast to train, cheap to run, easy to explain</li>
+              </ul>
+            </div>
+            <div class="ml-dl-col green">
+              <div class="ml-dl-head">
+                <div class="ml-dl-badge"><i class="fa-solid fa-brain"></i></div>
+                <div>
+                  <div class="ml-dl-title">Deep Learning</div>
+                  <div class="ml-dl-sub">Raw · Representation-Learning</div>
+                </div>
+              </div>
+              <div class="ml-dl-body">
+                Multi-layer neural networks that learn their own features directly from raw inputs — images, audio, text.
+                They shine where patterns are too complex for hand-crafted features, at the cost of data, compute, and interpretability.
+              </div>
+              <ul class="ml-dl-traits">
+                <li><i class="fa-solid fa-check"></i> Learns directly from raw pixels / signal</li>
+                <li><i class="fa-solid fa-check"></i> Handles high-dimensional, unstructured data</li>
+                <li><i class="fa-solid fa-check"></i> Needs large data + GPU compute</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- CASE STUDIES -->
+        <div>
+          <div class="sub-title"><i class="fa-solid fa-briefcase"></i> Two Case Studies</div>
+          <div class="case-grid">
+            <div class="case-card">
+              <div class="case-head ml">
+                <div class="case-ico"><i class="fa-solid fa-shield-halved"></i></div>
+                <div>
+                  <div class="case-tag">Machine Learning</div>
+                  <h3>Banking Fraud Detection</h3>
+                </div>
+              </div>
+              <div class="case-body">
+                <p class="case-line">
+                  Transaction data is structured: amounts, merchants, geolocation, device, history. Models like gradient-boosted trees
+                  score millions of events in milliseconds and surface why a flag fired — critical for a regulated bank.
+                </p>
+                <div class="fit-box good">
+                  <div class="fb-h">Why ML fits</div>
+                  Tabular data, tight latency, and audit-grade explainability make classic ML the pragmatic, compliant choice.
+                </div>
+                <div class="fit-box warn">
+                  <div class="fb-h">Why DL is overkill here</div>
+                  A deep network adds training cost and a black-box risk with little gain on clean tabular signals — and regulators want to know <em>why</em>.
+                </div>
+              </div>
+            </div>
+            <div class="case-card">
+              <div class="case-head dl">
+                <div class="case-ico"><i class="fa-solid fa-car-side"></i></div>
+                <div>
+                  <div class="case-tag">Deep Learning</div>
+                  <h3>Autonomous-Driving Vision</h3>
+                </div>
+              </div>
+              <div class="case-body">
+                <p class="case-line">
+                  Raw camera frames are unstructured pixels. Convolutional neural networks learn lane markings, pedestrians, and signs
+                  straight from the image — patterns no one could hand-code at scale.
+                </p>
+                <div class="fit-box good">
+                  <div class="fb-h">Why DL fits</div>
+                  The task is perceptual and high-dimensional; representation learning is the only realistic path to the accuracy required.
+                </div>
+                <div class="fit-box warn">
+                  <div class="fb-h">Why simple ML struggles</div>
+                  Shallow models need manually engineered features and still miss the nuance of raw visual context — unsafe at driving stakes.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SKILLS -->
+        <div>
+          <div class="sub-title"><i class="fa-solid fa-toolbox"></i> Skills Demonstrated</div>
+          <div class="a2-skills">
+            <div class="a2-skill"><i class="fa-solid fa-cube"></i> Machine learning fundamentals</div>
+            <div class="a2-skill"><i class="fa-solid fa-brain"></i> Deep learning concepts</div>
+            <div class="a2-skill"><i class="fa-solid fa-magnifying-glass-chart"></i> Case study analysis</div>
+            <div class="a2-skill"><i class="fa-solid fa-feather-pointed"></i> Technical communication</div>
+            <div class="a2-skill"><i class="fa-solid fa-globe"></i> AI/ML in real-world domains</div>
+            <div class="a2-skill"><i class="fa-solid fa-arrows-to-dot"></i> Business problem translation</div>
+          </div>
+        </div>
+
+        <!-- WHY IT MATTERS -->
+        <div>
+          <div class="sub-title"><i class="fa-solid fa-lightbulb"></i> Why This Artifact Matters</div>
+          <div class="callout">
+            <p>
+              Artifact 1 shows my strength in coaching and structured career guidance. Artifact 2 shows the other side of the portfolio:
+              technical AI/ML analysis and the ability to explain it clearly to mixed audiences. Together they prove a candidate who can
+              both build and communicate — a rarer combination than either skill alone.
+            </p>
+          </div>
+        </div>
+
+        <!-- AUDIENCE -->
+        <div>
+          <div class="sub-title"><i class="fa-solid fa-users"></i> Audience Customization</div>
+          <div class="callout-green">
+            <p>
+              This artifact is tailored for fintech and technology hiring teams — especially leaders who value practical AI judgment,
+              not just model trivia. Having spent years on USAA production systems, I framed the examples in language a banking or ML
+              stakeholder immediately recognizes: risk, latency, explainability, and regulatory fit. The goal is to show I can translate
+              AI/ML theory into decisions a business can act on.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
   <!-- PROJECTS -->
   <div class="section" id="projects">
     <div class="section-label">
@@ -694,6 +928,25 @@
           </div>
           <div class="project-links">
             <a href="#" class="project-link"><i class="fa-brands fa-github"></i> Repo</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-thumb indigo"><i class="fa-solid fa-code-compare"></i></div>
+        <div class="project-body">
+          <div class="project-title">ML vs. Deep Learning Case Study</div>
+          <div class="project-desc">
+            AIML-500 artifact comparing machine learning and deep learning through two real domains — banking fraud detection
+            (structured ML) and autonomous-driving vision (deep learning) — showing when each is the right tool.
+          </div>
+          <div class="project-tags">
+            <span class="tag-accent">Case Study</span>
+            <span class="tag-accent">ML</span>
+            <span class="tag-accent">Deep Learning</span>
+          </div>
+          <div class="project-links">
+            <a href="#artifact2" class="project-link"><i class="fa-solid fa-arrow-up-right-from-square"></i> View Artifact 2</a>
           </div>
         </div>
       </div>
