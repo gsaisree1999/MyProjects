@@ -1,0 +1,12 @@
+4.5 Reflection — Professional Portfolio Artifact 4
+Sai Sri Gottapu
+
+For my fourth artifact, I selected my Workshop 4 Data Challenge Scenarios work and revised it into a portfolio piece titled "Navigating Data Challenges in Machine Learning." I chose it deliberately for variety: Artifact 1 showed I can research AI's history, Artifact 2 showed I can analyze and select the right model, and Artifact 3 showed I can explain a concept clearly. Artifact 4 demonstrates a different, operational competency — handling the real data problems (cleaning, imbalance, privacy, bias, monitoring) that decide whether a model is actually trustworthy in production.
+
+Customization for the audience: The original activity was a guided chatbot conversation. I revised it into a structured competency page aimed at ML engineering leads, risk/compliance partners, and hiring managers evaluating production-readiness. I added USAA mainframe and QA examples (tokenizing customer data, auditing training coverage, logging overrides) so the content speaks to an enterprise audience, not just a coursework prompt.
+
+Lessons learned: The biggest lesson is that algorithm sophistication matters far less than data quality and disciplined evaluation. A model can score 98% accuracy and still catch nothing if the class is imbalanced; a model can be "correct" yet violate privacy or fairness. Reliability under real data — not a leaderboard score — is what earns trust. My QA background made this click: a defect report only matters if the data behind it is sound.
+
+Feedback received and revisions applied: My instructor's feedback on an earlier portfolio submission noted three things to correct: upload the actual artifact file so its quality can be evaluated, remove duplicated text, and ensure the GitHub link displays the artifact number clearly. I applied all three here: (1) I am uploading this standalone artifact-4 file with the submission, not only linking to it; (2) this reflection contains no duplicated blocks; and (3) the portfolio clearly labels this as "Artifact 4" at the page title, nav, and home card, and the submission link below points to it directly. I also kept the artifact itself free of repeated phrasing.
+
+This artifact completes a portfolio that now shows the full arc of AI/ML work: research, selection, communication, and responsible operation.

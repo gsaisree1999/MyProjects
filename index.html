@@ -440,6 +440,7 @@
     <a href="#artifact"><i class="fa-solid fa-timeline"></i> Artifact 1</a>
     <a href="#artifact2"><i class="fa-solid fa-code-compare"></i> Artifact 2</a>
     <a href="#artifact3"><i class="fa-solid fa-people-group"></i> Artifact 3</a>
+    <a href="#artifact4"><i class="fa-solid fa-database"></i> Artifact 4</a>
     <a href="#projects"><i class="fa-solid fa-diagram-project"></i> Projects</a>
     <a href="#skills"><i class="fa-solid fa-bolt"></i> Skills</a>
     <a href="#about"><i class="fa-solid fa-user"></i> About</a>
@@ -461,6 +462,7 @@
         <a href="#artifact" class="btn btn-primary"><i class="fa-solid fa-timeline"></i> View Artifact 1</a>
         <a href="#artifact2" class="btn btn-ghost"><i class="fa-solid fa-code-compare"></i> Artifact 2</a>
         <a href="#artifact3" class="btn btn-ghost"><i class="fa-solid fa-people-group"></i> Artifact 3</a>
+        <a href="#artifact4" class="btn btn-ghost"><i class="fa-solid fa-database"></i> Artifact 4</a>
         <a href="#about" class="btn btn-ghost"><i class="fa-solid fa-user"></i> About Me</a>
       </div>
     </div>
@@ -1019,6 +1021,255 @@
               it adds the QA-to-AI/ML framing — why explaining systems clearly is a quality discipline — and presents the
               human–AI collaboration process as a transparent, repeatable method rather than a one-off exercise. My years of
               writing defect reports for mixed technical audiences at USAA shaped every wording choice.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTIFACT 4 -->
+  <div class="section" id="artifact4">
+    <div class="section-label">
+      <div class="section-label-icon"><i class="fa-solid fa-database"></i></div>
+      <h2>Navigating Data Challenges in ML</h2>
+      <span class="artifact-pill">Artifact 4</span>
+    </div>
+
+    <div class="artifact-wrap">
+      <div class="artifact-header">
+        <div style="font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--accent); margin-bottom:0.6rem;">
+          <strong>Professional Portfolio · Artifact 4 – Data Challenge Scenarios</strong>
+        </div>
+        <div class="artifact-title-row">
+          <div class="artifact-title">Navigating Data Challenges in Machine Learning</div>
+          <span class="live-pill"><i class="fa-solid fa-circle" style="font-size:0.5rem;"></i> Course Artifact</span>
+        </div>
+        <div class="artifact-sub">AI/ML Data Challenge Scenarios · Machine Learning Fundamentals (AIML-500) · Indiana Wesleyan University · Summer 2026</div>
+        <div class="tag-row">
+          <span class="tag-accent">Data Cleaning</span>
+          <span class="tag-accent">Class Imbalance</span>
+          <span class="tag-accent">Model Evaluation</span>
+          <span class="tag-accent">Privacy &amp; Security</span>
+          <span class="tag-accent">Monitoring</span>
+        </div>
+      </div>
+
+      <div class="artifact-body">
+
+        <!-- OVERVIEW -->
+        <div style="background:#ede9fe; border:1px solid #c4b5fd; border-radius:10px; padding:1rem 1.25rem;">
+          <div style="font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--accent); margin-bottom:0.4rem;">Project Overview</div>
+          <p style="font-size:0.9rem; color:#3730a3; font-weight:500; line-height:1.7;">
+            This artifact was adapted from the Workshop 4 Data Challenge Scenarios activity in Machine Learning Fundamentals and revised for a professional audience.
+            It demonstrates the ability to identify and address the practical data problems — messy records, class imbalance, privacy exposure, and model drift —
+            that decide whether a machine learning model is accurate, fair, and trustworthy in production. It adds a competency distinct from Artifacts 1–3:
+            not researching AI history, selecting a model, or explaining a concept, but <strong>operating ML responsibly</strong> under real-world data.
+          </p>
+        </div>
+
+        <!-- DATA CLEANING -->
+        <div>
+          <div class="sub-title"><i class="fa-solid fa-broom"></i> Data Cleaning &amp; Preprocessing</div>
+          <div class="case-grid">
+            <div class="case-card">
+              <div class="case-head ml">
+                <div class="case-ico"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                <div>
+                  <div class="case-tag">Missing &amp; Outliers</div>
+                  <h3>Handle Messy Records</h3>
+                </div>
+              </div>
+              <div class="case-body">
+                <p class="case-line">
+                  Real data is rarely clean. Missing values are dropped only when rare and random; otherwise I impute (mean/median) or flag them so the model knows they were absent.
+                  Outliers are investigated before deletion — a $9,999 transaction may be fraud, not a typo.
+                </p>
+              </div>
+            </div>
+            <div class="case-card">
+              <div class="case-head dl">
+                <div class="case-ico"><i class="fa-solid fa-scale-balanced"></i></div>
+                <div>
+                  <div class="case-tag">Class Imbalance</div>
+                  <h3>When 98% Is a Trap</h3>
+                </div>
+              </div>
+              <div class="case-body">
+                <p class="case-line">
+                  If 98% of tickets are "resolved," a model that always predicts "resolved" scores 98% accuracy yet catches nothing.
+                  I handle imbalance with class weights, resampling (SMOTE), and metrics beyond accuracy — precision, recall, F1.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EVALUATION -->
+        <div>
+          <div class="sub-title"><i class="fa-solid fa-bullseye"></i> Model Selection &amp; Evaluation</div>
+          <div class="ml-dl-grid">
+            <div class="ml-dl-col indigo">
+              <div class="ml-dl-head">
+                <div class="ml-dl-badge"><i class="fa-solid fa-sitemap"></i></div>
+                <div>
+                  <div class="ml-dl-title">Choosing &amp; Justifying</div>
+                  <div class="ml-dl-sub">Fit the problem</div>
+                </div>
+              </div>
+              <div class="ml-dl-body">
+                Model choice follows the problem: structured, tabular, explainability-sensitive data → gradient boosting or logistic regression; raw images/audio → deep learning.
+                In a bank, a less-accurate-but-explainable model is often the right call so risk teams can govern it.
+              </div>
+            </div>
+            <div class="ml-dl-col green">
+              <div class="ml-dl-head">
+                <div class="ml-dl-badge"><i class="fa-solid fa-balance-scale"></i></div>
+                <div>
+                  <div class="ml-dl-title">False Positives vs Negatives</div>
+                  <div class="ml-dl-sub">Cost drives the threshold</div>
+                </div>
+              </div>
+              <div class="ml-dl-body">
+                Accuracy lies on imbalanced data. A false positive is a false alarm; a false negative is a missed event. Which hurts more is domain-specific —
+                so I set the decision threshold by business cost, not a default 0.5.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRIVACY & BIAS -->
+        <div>
+          <div class="sub-title"><i class="fa-solid fa-lock"></i> Privacy, Security &amp; Bias</div>
+          <div class="case-grid">
+            <div class="case-card">
+              <div class="case-head ml">
+                <div class="case-ico"><i class="fa-solid fa-user-shield"></i></div>
+                <div>
+                  <div class="case-tag">Privacy &amp; Security</div>
+                  <h3>Protect the Training Data</h3>
+                </div>
+              </div>
+              <div class="case-body">
+                <p class="case-line">
+                  Training data often carries PII — customer names, account context. I minimize columns, tokenize/pseudonymize, restrict access, and use synthetic data for development,
+                  keeping training data inside the regulated environment. That discipline comes straight from USAA mainframe work.
+                </p>
+              </div>
+            </div>
+            <div class="case-card">
+              <div class="case-head dl">
+                <div class="case-ico"><i class="fa-solid fa-people-group"></i></div>
+                <div>
+                  <div class="case-tag">Bias Mitigation</div>
+                  <h3>Audit for Representation</h3>
+                </div>
+              </div>
+              <div class="case-body">
+                <p class="case-line">
+                  Biased historical data yields a biased model. I audit training data for coverage and check outcomes across groups.
+                  If "success" labels come only from one business unit, the model learns that unit's pattern as "normal" and misreads others.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MONITORING -->
+        <div>
+          <div class="sub-title"><i class="fa-solid fa-heart-pulse"></i> Post-Deployment Monitoring</div>
+          <div class="callout">
+            <p>
+              A model degrades as data changes. My monitoring plan tracks input distributions, accuracy, and false-positive/false-negative rates over time;
+              sets alert thresholds; schedules retraining; keeps a human review on high-stakes outputs; and logs <strong>overrides</strong> — where humans correct the model.
+              Overrides are where hidden bias and drift surface first. In QA terms, it is the same discipline as monitoring a production system after release:
+              the work is not done at deployment, it begins there.
+            </p>
+          </div>
+        </div>
+
+        <!-- PROCESS -->
+        <div>
+          <div class="sub-title"><i class="fa-solid fa-arrows-spin"></i> Process: Working With the AI Coach</div>
+          <div class="case-grid">
+            <div class="case-card">
+              <div class="case-head ml">
+                <div class="case-ico"><i class="fa-solid fa-database"></i></div>
+                <div>
+                  <div class="case-tag">Scenario Walkthrough</div>
+                  <h3>Three Data Challenges</h3>
+                </div>
+              </div>
+              <div class="case-body">
+                <p class="case-line">
+                  I worked three data-challenge scenarios with the SchoolAI coach, answering each with a decision and the reasoning behind it —
+                  the same discipline I apply to defect triage: state the finding, then the evidence.
+                </p>
+              </div>
+            </div>
+            <div class="case-card">
+              <div class="case-head dl">
+                <div class="case-ico"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                <div>
+                  <div class="case-tag">Critical Reflection</div>
+                  <h3>Beyond the Surface</h3>
+                </div>
+              </div>
+              <div class="case-body">
+                <p class="case-line">
+                  I pushed past the coach's hints with follow-up questions — test-set leakage, reward gaming, stopping criteria —
+                  treating the conversation like a peer review rather than a quiz.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TOOLS -->
+        <div>
+          <div class="sub-title"><i class="fa-solid fa-toolbox"></i> Tools Used (Disclosed)</div>
+          <div class="callout-green">
+            <p>
+              <strong>SchoolAI Data Challenge Coach</strong> guided the scenario walkthrough, with all AI use disclosed in the original class submission.
+              The decisions, reasoning, and this revision were my own. Grounded in the course readings on data quality, fairness, and the ML lifecycle.
+            </p>
+          </div>
+        </div>
+
+        <!-- SKILLS -->
+        <div>
+          <div class="sub-title"><i class="fa-solid fa-star"></i> Skills Demonstrated</div>
+          <div class="a2-skills">
+            <div class="a2-skill"><i class="fa-solid fa-broom"></i> Data Preprocessing</div>
+            <div class="a2-skill"><i class="fa-solid fa-vials"></i> Imbalance &amp; Resampling</div>
+            <div class="a2-skill"><i class="fa-solid fa-bullseye"></i> Model Evaluation</div>
+            <div class="a2-skill"><i class="fa-solid fa-user-shield"></i> Privacy &amp; Security</div>
+            <div class="a2-skill"><i class="fa-solid fa-scale-balanced"></i> Bias Mitigation</div>
+            <div class="a2-skill"><i class="fa-solid fa-heart-pulse"></i> Monitoring &amp; Verification</div>
+          </div>
+        </div>
+
+        <!-- VALUE -->
+        <div>
+          <div class="sub-title"><i class="fa-solid fa-lightbulb"></i> Why This Artifact Matters</div>
+          <div class="callout">
+            <p>
+              Artifact 1 shows I can research AI's history; Artifact 2 shows I can analyze and select the right model; Artifact 3 shows I can explain a concept clearly.
+              Artifact 4 demonstrates a different, operational competency — handling the real data problems (cleaning, imbalance, privacy, bias, monitoring) that decide whether a model is trustworthy in production.
+              In QA, a defect report only matters if the developer understands it; in ML, a model only matters if the data feeding it is sound and the system is watched after launch. Accuracy doesn't earn trust; reliability under real data does.
+            </p>
+          </div>
+        </div>
+
+        <!-- AUDIENCE -->
+        <div>
+          <div class="sub-title"><i class="fa-solid fa-users"></i> Audience Customization</div>
+          <div class="callout-green">
+            <p>
+              The original activity was a guided chatbot conversation. This portfolio version is customized for <strong>ML engineering leads, risk/compliance partners, and hiring managers evaluating production-readiness</strong>:
+              it adds USAA mainframe and QA framing — why data discipline is a quality concern — and presents the scenarios as operational standards rather than a coursework exercise.
+              My years of mainframe QA at USAA shaped every example.
             </p>
           </div>
         </div>

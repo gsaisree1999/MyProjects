@@ -1,0 +1,667 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Artifact 4 | Navigating Data Challenges in ML</title><style>
+    :root {
+      --bg: #f5f6fa;
+      --surface: #ffffff;
+      --surface2: #f0f1f7;
+      --border: #e2e4f0;
+      --accent: #4f46e5;
+      --accent2: #059669;
+      --accent3: #e11d48;
+      --text: #111827;
+      --text-muted: #6b7280;
+      --text-dim: #9ca3af;
+      --radius: 16px;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* ── TOP BAR ── */
+    nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 58px;
+      position: sticky; top: 0; z-index: 100;
+      box-shadow: 0 1px 8px rgba(0,0,0,0.06);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-weight: 800; font-size: 1rem; color: var(--text);
+      letter-spacing: -0.3px;
+    }
+    .nav-logo-badge {
+      background: var(--accent); color: #fff;
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 2px 8px; border-radius: 999px;
+    }
+    .nav-links { display: flex; gap: 0.25rem; }
+    .nav-links a {
+      color: var(--text-muted); text-decoration: none;
+      font-size: 0.83rem; font-weight: 600; padding: 6px 14px;
+      border-radius: 8px; transition: all 0.15s;
+      display: flex; align-items: center; gap: 0.35rem;
+    }
+    .nav-links a:hover { background: var(--surface2); color: var(--accent); }
+
+    /* ── HERO (split layout) ── */
+    .hero-wrap {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+    .hero {
+      max-width: 1000px; margin: 0 auto;
+      padding: 60px 2.5rem;
+      display: grid; grid-template-columns: 1fr 340px;
+      gap: 3rem; align-items: center;
+    }
+    .hero-left {}
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: #ede9fe; color: var(--accent);
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 4px 12px; border-radius: 999px;
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800; line-height: 1.15;
+      letter-spacing: -0.8px; margin-bottom: 1rem; color: var(--text);
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      color: var(--text-muted); font-size: 1rem;
+      max-width: 480px; margin-bottom: 1.8rem; line-height: 1.75;
+    }
+    .hero-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 10px 22px; border-radius: 10px;
+      font-size: 0.88rem; font-weight: 700;
+      text-decoration: none; transition: all 0.18s; border: none; cursor: pointer;
+      font-family: inherit;
+    }
+    .btn-primary {
+      background: var(--accent); color: #fff;
+      box-shadow: 0 4px 16px rgba(79,70,229,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(79,70,229,0.4); }
+    .btn-ghost {
+      background: var(--surface2); color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* HERO RIGHT — profile card */
+    .hero-card {
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem; text-align: center;
+    }
+    .hero-avatar {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem; font-weight: 800; color: #fff;
+      margin: 0 auto 1rem;
+      box-shadow: 0 0 0 4px #ede9fe;
+    }
+    .hero-card-name { font-size: 1rem; font-weight: 800; margin-bottom: 0.2rem; }
+    .hero-card-role { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1rem; }
+    .hero-stats {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0.5rem; margin-bottom: 1rem;
+    }
+    .hero-stat {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px; padding: 0.6rem;
+    }
+    .hero-stat-num { font-size: 1.2rem; font-weight: 800; color: var(--accent); line-height: 1; }
+    .hero-stat-label { font-size: 0.65rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.06em; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; justify-content: center; }
+    .tag {
+      background: var(--surface2); border: 1px solid var(--border);
+      color: var(--text-muted); font-size: 0.72rem; font-weight: 600;
+      padding: 3px 10px; border-radius: 999px;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .page { max-width: 1000px; margin: 0 auto; padding: 3rem 2.5rem 5rem; }
+
+    /* ── SECTION HEADER ── */
+    .section { margin-bottom: 3rem; }
+    .section-label {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .section-label-icon {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: #ede9fe; color: var(--accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.95rem; flex-shrink: 0;
+    }
+    .section-label h2 { font-size: 1.1rem; font-weight: 800; letter-spacing: -0.2px; }
+    .section-label .artifact-pill {
+      margin-left: auto;
+      background: var(--accent); color: #fff;
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; padding: 3px 12px; border-radius: 999px;
+    }
+    .divider { height: 1px; background: var(--border); margin-bottom: 3rem; }
+
+    /* ── ARTIFACT CARD ── */
+    .artifact-wrap {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+    .artifact-header {
+      padding: 1.75rem 2rem 1.25rem;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(135deg, #fafafa, #f5f3ff);
+    }
+    .artifact-title-row {
+      display: flex; align-items: flex-start;
+      justify-content: space-between; gap: 1rem; margin-bottom: 0.5rem;
+    }
+    .artifact-title { font-size: 1.3rem; font-weight: 800; }
+    .live-pill {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: #dcfce7; border: 1px solid #86efac; color: #15803d;
+      font-size: 0.72rem; font-weight: 700; padding: 4px 12px; border-radius: 999px;
+      white-space: nowrap;
+    }
+    .artifact-sub { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.85rem; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .tag-accent {
+      background: #ede9fe; border: 1px solid #c4b5fd;
+      color: var(--accent); font-size: 0.72rem; font-weight: 600;
+      padding: 3px 10px; border-radius: 999px;
+    }
+
+    /* artifact body */
+    .artifact-body { padding: 2rem; display: flex; flex-direction: column; gap: 2rem; }
+    .sub-title {
+      font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--accent); margin-bottom: 0.65rem;
+      display: flex; align-items: center; gap: 0.4rem;
+    }
+    .sub-title::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
+    }
+    .prose { color: var(--text-muted); font-size: 0.9rem; line-height: 1.8; }
+
+    /* timeline visual */
+    .timeline-visual {
+      background: linear-gradient(135deg, #f5f3ff, #ecfdf5);
+      border: 1px solid var(--border); border-radius: 12px;
+      padding: 2rem; text-align: center;
+    }
+    .timeline-visual-title { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.3rem; }
+    .timeline-visual-sub { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+    .timeline-chips {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem;
+    }
+    .t-chip {
+      display: flex; flex-direction: column; align-items: center;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px; padding: 0.55rem 0.9rem; min-width: 80px;
+    }
+    .t-chip.highlight { background: var(--accent); border-color: var(--accent); }
+    .t-chip.highlight .t-year, .t-chip.highlight .t-event { color: #fff; }
+    .t-chip.highlight2 { background: #059669; border-color: #059669; }
+    .t-chip.highlight2 .t-year, .t-chip.highlight2 .t-event { color: #fff; }
+    .t-year { font-size: 0.72rem; font-weight: 700; color: var(--accent); font-family: 'JetBrains Mono', monospace; }
+    .t-event { font-size: 0.72rem; font-weight: 600; color: var(--text); margin-top: 0.15rem; }
+    .t-chip.highlight .t-year { color: rgba(255,255,255,0.8); }
+
+    /* milestone grid */
+    .milestone-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(195px, 1fr)); gap: 0.75rem;
+    }
+    .milestone {
+      background: var(--bg); border: 1px solid var(--border); border-radius: 12px;
+      padding: 1rem; transition: all 0.18s;
+    }
+    .milestone:hover { border-color: var(--accent); box-shadow: 0 4px 16px rgba(79,70,229,0.08); transform: translateY(-2px); }
+    .m-year { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 600; color: var(--accent); margin-bottom: 0.3rem; }
+    .m-title { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .m-desc { font-size: 0.75rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* callout */
+    .callout {
+      background: #f5f3ff; border-left: 4px solid var(--accent);
+      border-radius: 0 12px 12px 0; padding: 1.2rem 1.5rem;
+    }
+    .callout p { font-size: 0.92rem; color: #3730a3; font-style: italic; line-height: 1.8; font-weight: 500; }
+    .callout-green {
+      background: #f0fdf4; border-left: 4px solid var(--accent2);
+      border-radius: 0 12px 12px 0; padding: 1.2rem 1.5rem;
+    }
+    .callout-green p { font-size: 0.9rem; color: #065f46; line-height: 1.8; }
+
+    /* SKILLS */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.75rem; }
+    .skill-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1rem;
+      transition: all 0.18s;
+    }
+    .skill-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 4px 16px rgba(79,70,229,0.08); }
+    .sk-icon { font-size: 1.4rem; margin-bottom: 0.45rem; }
+    .sk-cat { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); margin-bottom: 0.2rem; }
+    .sk-name { font-size: 0.83rem; font-weight: 700; color: var(--text); margin-bottom: 0.4rem; }
+    .sk-bar { height: 3px; background: var(--border); border-radius: 999px; overflow: hidden; }
+    .sk-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .info-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.5rem;
+    }
+    .info-card.full { grid-column: 1 / -1; }
+    .info-card.accent-border { border-left: 4px solid var(--accent); }
+    .info-label { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 0.75rem; }
+    .info-label-green { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent2); margin-bottom: 0.75rem; }
+
+    /* exp cards */
+    .exp-card {
+      background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
+      padding: 0.9rem 1rem; margin-bottom: 0.65rem;
+      display: flex; align-items: flex-start; gap: 0.75rem;
+    }
+    .exp-card:last-child { margin-bottom: 0; }
+    .exp-icon {
+      width: 34px; height: 34px; border-radius: 8px; flex-shrink: 0;
+      background: #ede9fe; color: var(--accent);
+      display: flex; align-items: center; justify-content: center; font-size: 0.9rem;
+    }
+    .exp-title { font-size: 0.85rem; font-weight: 700; }
+    .exp-sub { font-size: 0.75rem; color: var(--text-muted); }
+
+    /* CONTACT */
+    .contact-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 2rem;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1.5rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+    }
+    .contact-left h3 { font-size: 1.1rem; font-weight: 800; margin-bottom: 0.3rem; }
+    .contact-left p { color: var(--text-muted); font-size: 0.88rem; max-width: 400px; }
+    .contact-links { display: flex; gap: 0.65rem; flex-wrap: wrap; }
+    .contact-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--surface2); border: 1px solid var(--border);
+      color: var(--text); text-decoration: none;
+      padding: 8px 16px; border-radius: 8px; font-size: 0.83rem; font-weight: 600;
+      transition: all 0.15s; font-family: inherit;
+    }
+    .contact-btn:hover { border-color: var(--accent); color: var(--accent); background: #ede9fe; }
+
+    /* FOOTER */
+    footer {
+      background: var(--surface); border-top: 1px solid var(--border);
+      padding: 1.5rem 2.5rem; text-align: center;
+      color: var(--text-dim); font-size: 0.8rem;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    /* REFS */
+    .ref-list { list-style: none; }
+    .ref-list li {
+      font-size: 0.8rem; color: var(--text-muted); line-height: 1.7;
+      padding: 0.4rem 0; border-bottom: 1px solid var(--border);
+      padding-left: 1rem; position: relative;
+    }
+    .ref-list li::before { content: '↗'; position: absolute; left: 0; color: var(--accent); }
+
+    /* PROJECTS */
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+    .project-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: all 0.18s; box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+    }
+    .project-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 8px 28px rgba(79,70,229,0.12); }
+    .project-thumb {
+      height: 116px; display: flex; align-items: center; justify-content: center;
+      font-size: 2.2rem; color: #fff; border-bottom: 1px solid var(--border);
+    }
+    .project-thumb.indigo { background: linear-gradient(135deg, var(--accent), #7c3aed); }
+    .project-thumb.green  { background: linear-gradient(135deg, var(--accent2), #0d9488); }
+    .project-thumb.rose   { background: linear-gradient(135deg, var(--accent3), #be123c); }
+    .project-body { padding: 1.25rem 1.4rem 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
+    .project-title { font-size: 1.05rem; font-weight: 800; letter-spacing: -0.2px; }
+    .project-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.65; flex: 1; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+    .project-links { display: flex; gap: 0.5rem; margin-top: 0.4rem; }
+    .project-link {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      font-size: 0.78rem; font-weight: 700; text-decoration: none;
+      color: var(--accent); background: #ede9fe; padding: 5px 12px; border-radius: 8px; transition: all 0.15s;
+    }
+    .project-link:hover { background: var(--accent); color: #fff; }
+    .project-link.secondary { color: var(--accent2); background: #dcfce7; }
+    .project-link.secondary:hover { background: var(--accent2); color: #fff; }
+
+    /* ARTIFACT 2 — ML vs DL */
+    .ml-dl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .ml-dl-col {
+      border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.5rem; background: var(--surface);
+    }
+    .ml-dl-col.indigo { border-top: 4px solid var(--accent); }
+    .ml-dl-col.green  { border-top: 4px solid var(--accent2); }
+    .ml-dl-head { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.8rem; }
+    .ml-dl-badge {
+      width: 42px; height: 42px; border-radius: 12px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 1.15rem; color: #fff;
+    }
+    .ml-dl-col.indigo .ml-dl-badge { background: var(--accent); }
+    .ml-dl-col.green  .ml-dl-badge { background: var(--accent2); }
+    .ml-dl-title { font-size: 1.05rem; font-weight: 800; }
+    .ml-dl-sub { font-size: 0.74rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 700; }
+    .ml-dl-body { font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; }
+    .ml-dl-traits { list-style: none; margin-top: 0.9rem; display: flex; flex-direction: column; gap: 0.45rem; }
+    .ml-dl-traits li { font-size: 0.8rem; color: var(--text); display: flex; align-items: flex-start; gap: 0.5rem; line-height: 1.5; }
+    .ml-dl-traits li i { color: var(--accent); margin-top: 0.15rem; font-size: 0.75rem; }
+    .ml-dl-col.green .ml-dl-traits li i { color: var(--accent2); }
+
+    .case-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .case-card {
+      border: 1px solid var(--border); border-radius: var(--radius);
+      overflow: hidden; background: var(--surface); box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+    }
+    .case-head { padding: 1.1rem 1.3rem; display: flex; align-items: center; gap: 0.7rem; border-bottom: 1px solid var(--border); }
+    .case-head .case-ico { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: #fff; flex-shrink: 0; }
+    .case-head.ml .case-ico { background: var(--accent); }
+    .case-head.dl .case-ico { background: var(--accent2); }
+    .case-head h3 { font-size: 0.98rem; font-weight: 800; line-height: 1.2; }
+    .case-head .case-tag { font-size: 0.66rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-dim); }
+    .case-body { padding: 1.2rem 1.3rem; display: flex; flex-direction: column; gap: 0.85rem; }
+    .case-line { font-size: 0.83rem; color: var(--text-muted); line-height: 1.65; }
+    .fit-box { border-radius: 10px; padding: 0.8rem 0.95rem; font-size: 0.8rem; line-height: 1.55; }
+    .fit-box.good { background: #f0fdf4; border-left: 3px solid var(--accent2); }
+    .fit-box.good .fb-h { color: #065f46; font-weight: 700; }
+    .fit-box.warn { background: #fef2f2; border-left: 3px solid var(--accent3); }
+    .fit-box.warn .fb-h { color: #9f1239; font-weight: 700; }
+
+    .a2-skills { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.6rem; }
+    .a2-skill {
+      display: flex; align-items: center; gap: 0.6rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px; padding: 0.7rem 0.9rem; font-size: 0.82rem; font-weight: 600;
+      transition: all 0.15s;
+    }
+    .a2-skill:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 4px 14px rgba(79,70,229,0.08); }
+    .a2-skill i { color: var(--accent); font-size: 0.95rem; width: 18px; text-align: center; }
+
+    @media (max-width: 700px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .ml-dl-grid { grid-template-columns: 1fr; }
+      .case-grid { grid-template-columns: 1fr; }
+    }
+  </style></head><body style="background:#f5f3ff;"><nav style="text-align:center;padding:1rem;font-weight:700;"><span>Sai Sri Gottapu</span> <span style="color:#6d28d9;">· AI/ML Portfolio</span></nav><div style="max-width:900px;margin:0 auto;padding:1rem;"><div class="section" id="artifact4">
+    <div class="section-label">
+      <div class="section-label-icon"><i class="fa-solid fa-database"></i></div>
+      <h2>Navigating Data Challenges in ML</h2>
+      <span class="artifact-pill">Artifact 4</span>
+    </div>
+
+    <div class="artifact-wrap">
+      <div class="artifact-header">
+        <div style="font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--accent); margin-bottom:0.6rem;">
+          <strong>Professional Portfolio · Artifact 4 – Data Challenge Scenarios</strong>
+        </div>
+        <div class="artifact-title-row">
+          <div class="artifact-title">Navigating Data Challenges in Machine Learning</div>
+          <span class="live-pill"><i class="fa-solid fa-circle" style="font-size:0.5rem;"></i> Course Artifact</span>
+        </div>
+        <div class="artifact-sub">AI/ML Data Challenge Scenarios · Machine Learning Fundamentals (AIML-500) · Indiana Wesleyan University · Summer 2026</div>
+        <div class="tag-row">
+          <span class="tag-accent">Data Cleaning</span>
+          <span class="tag-accent">Class Imbalance</span>
+          <span class="tag-accent">Model Evaluation</span>
+          <span class="tag-accent">Privacy &amp; Security</span>
+          <span class="tag-accent">Monitoring</span>
+        </div>
+      </div>
+
+      <div class="artifact-body">
+
+        <!-- OVERVIEW -->
+        <div style="background:#ede9fe; border:1px solid #c4b5fd; border-radius:10px; padding:1rem 1.25rem;">
+          <div style="font-size:0.68rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--accent); margin-bottom:0.4rem;">Project Overview</div>
+          <p style="font-size:0.9rem; color:#3730a3; font-weight:500; line-height:1.7;">
+            This artifact was adapted from the Workshop 4 Data Challenge Scenarios activity in Machine Learning Fundamentals and revised for a professional audience.
+            It demonstrates the ability to identify and address the practical data problems — messy records, class imbalance, privacy exposure, and model drift —
+            that decide whether a machine learning model is accurate, fair, and trustworthy in production. It adds a competency distinct from Artifacts 1–3:
+            not researching AI history, selecting a model, or explaining a concept, but <strong>operating ML responsibly</strong> under real-world data.
+          </p>
+        </div>
+
+        <!-- DATA CLEANING -->
+        <div>
+          <div class="sub-title"><i class="fa-solid fa-broom"></i> Data Cleaning &amp; Preprocessing</div>
+          <div class="case-grid">
+            <div class="case-card">
+              <div class="case-head ml">
+                <div class="case-ico"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                <div>
+                  <div class="case-tag">Missing &amp; Outliers</div>
+                  <h3>Handle Messy Records</h3>
+                </div>
+              </div>
+              <div class="case-body">
+                <p class="case-line">
+                  Real data is rarely clean. Missing values are dropped only when rare and random; otherwise I impute (mean/median) or flag them so the model knows they were absent.
+                  Outliers are investigated before deletion — a $9,999 transaction may be fraud, not a typo.
+                </p>
+              </div>
+            </div>
+            <div class="case-card">
+              <div class="case-head dl">
+                <div class="case-ico"><i class="fa-solid fa-scale-balanced"></i></div>
+                <div>
+                  <div class="case-tag">Class Imbalance</div>
+                  <h3>When 98% Is a Trap</h3>
+                </div>
+              </div>
+              <div class="case-body">
+                <p class="case-line">
+                  If 98% of tickets are "resolved," a model that always predicts "resolved" scores 98% accuracy yet catches nothing.
+                  I handle imbalance with class weights, resampling (SMOTE), and metrics beyond accuracy — precision, recall, F1.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EVALUATION -->
+        <div>
+          <div class="sub-title"><i class="fa-solid fa-bullseye"></i> Model Selection &amp; Evaluation</div>
+          <div class="ml-dl-grid">
+            <div class="ml-dl-col indigo">
+              <div class="ml-dl-head">
+                <div class="ml-dl-badge"><i class="fa-solid fa-sitemap"></i></div>
+                <div>
+                  <div class="ml-dl-title">Choosing &amp; Justifying</div>
+                  <div class="ml-dl-sub">Fit the problem</div>
+                </div>
+              </div>
+              <div class="ml-dl-body">
+                Model choice follows the problem: structured, tabular, explainability-sensitive data → gradient boosting or logistic regression; raw images/audio → deep learning.
+                In a bank, a less-accurate-but-explainable model is often the right call so risk teams can govern it.
+              </div>
+            </div>
+            <div class="ml-dl-col green">
+              <div class="ml-dl-head">
+                <div class="ml-dl-badge"><i class="fa-solid fa-balance-scale"></i></div>
+                <div>
+                  <div class="ml-dl-title">False Positives vs Negatives</div>
+                  <div class="ml-dl-sub">Cost drives the threshold</div>
+                </div>
+              </div>
+              <div class="ml-dl-body">
+                Accuracy lies on imbalanced data. A false positive is a false alarm; a false negative is a missed event. Which hurts more is domain-specific —
+                so I set the decision threshold by business cost, not a default 0.5.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PRIVACY & BIAS -->
+        <div>
+          <div class="sub-title"><i class="fa-solid fa-lock"></i> Privacy, Security &amp; Bias</div>
+          <div class="case-grid">
+            <div class="case-card">
+              <div class="case-head ml">
+                <div class="case-ico"><i class="fa-solid fa-user-shield"></i></div>
+                <div>
+                  <div class="case-tag">Privacy &amp; Security</div>
+                  <h3>Protect the Training Data</h3>
+                </div>
+              </div>
+              <div class="case-body">
+                <p class="case-line">
+                  Training data often carries PII — customer names, account context. I minimize columns, tokenize/pseudonymize, restrict access, and use synthetic data for development,
+                  keeping training data inside the regulated environment. That discipline comes straight from USAA mainframe work.
+                </p>
+              </div>
+            </div>
+            <div class="case-card">
+              <div class="case-head dl">
+                <div class="case-ico"><i class="fa-solid fa-people-group"></i></div>
+                <div>
+                  <div class="case-tag">Bias Mitigation</div>
+                  <h3>Audit for Representation</h3>
+                </div>
+              </div>
+              <div class="case-body">
+                <p class="case-line">
+                  Biased historical data yields a biased model. I audit training data for coverage and check outcomes across groups.
+                  If "success" labels come only from one business unit, the model learns that unit's pattern as "normal" and misreads others.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MONITORING -->
+        <div>
+          <div class="sub-title"><i class="fa-solid fa-heart-pulse"></i> Post-Deployment Monitoring</div>
+          <div class="callout">
+            <p>
+              A model degrades as data changes. My monitoring plan tracks input distributions, accuracy, and false-positive/false-negative rates over time;
+              sets alert thresholds; schedules retraining; keeps a human review on high-stakes outputs; and logs <strong>overrides</strong> — where humans correct the model.
+              Overrides are where hidden bias and drift surface first. In QA terms, it is the same discipline as monitoring a production system after release:
+              the work is not done at deployment, it begins there.
+            </p>
+          </div>
+        </div>
+
+        <!-- PROCESS -->
+        <div>
+          <div class="sub-title"><i class="fa-solid fa-arrows-spin"></i> Process: Working With the AI Coach</div>
+          <div class="case-grid">
+            <div class="case-card">
+              <div class="case-head ml">
+                <div class="case-ico"><i class="fa-solid fa-database"></i></div>
+                <div>
+                  <div class="case-tag">Scenario Walkthrough</div>
+                  <h3>Three Data Challenges</h3>
+                </div>
+              </div>
+              <div class="case-body">
+                <p class="case-line">
+                  I worked three data-challenge scenarios with the SchoolAI coach, answering each with a decision and the reasoning behind it —
+                  the same discipline I apply to defect triage: state the finding, then the evidence.
+                </p>
+              </div>
+            </div>
+            <div class="case-card">
+              <div class="case-head dl">
+                <div class="case-ico"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                <div>
+                  <div class="case-tag">Critical Reflection</div>
+                  <h3>Beyond the Surface</h3>
+                </div>
+              </div>
+              <div class="case-body">
+                <p class="case-line">
+                  I pushed past the coach's hints with follow-up questions — test-set leakage, reward gaming, stopping criteria —
+                  treating the conversation like a peer review rather than a quiz.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TOOLS -->
+        <div>
+          <div class="sub-title"><i class="fa-solid fa-toolbox"></i> Tools Used (Disclosed)</div>
+          <div class="callout-green">
+            <p>
+              <strong>SchoolAI Data Challenge Coach</strong> guided the scenario walkthrough, with all AI use disclosed in the original class submission.
+              The decisions, reasoning, and this revision were my own. Grounded in the course readings on data quality, fairness, and the ML lifecycle.
+            </p>
+          </div>
+        </div>
+
+        <!-- SKILLS -->
+        <div>
+          <div class="sub-title"><i class="fa-solid fa-star"></i> Skills Demonstrated</div>
+          <div class="a2-skills">
+            <div class="a2-skill"><i class="fa-solid fa-broom"></i> Data Preprocessing</div>
+            <div class="a2-skill"><i class="fa-solid fa-vials"></i> Imbalance &amp; Resampling</div>
+            <div class="a2-skill"><i class="fa-solid fa-bullseye"></i> Model Evaluation</div>
+            <div class="a2-skill"><i class="fa-solid fa-user-shield"></i> Privacy &amp; Security</div>
+            <div class="a2-skill"><i class="fa-solid fa-scale-balanced"></i> Bias Mitigation</div>
+            <div class="a2-skill"><i class="fa-solid fa-heart-pulse"></i> Monitoring &amp; Verification</div>
+          </div>
+        </div>
+
+        <!-- VALUE -->
+        <div>
+          <div class="sub-title"><i class="fa-solid fa-lightbulb"></i> Why This Artifact Matters</div>
+          <div class="callout">
+            <p>
+              Artifact 1 shows I can research AI's history; Artifact 2 shows I can analyze and select the right model; Artifact 3 shows I can explain a concept clearly.
+              Artifact 4 demonstrates a different, operational competency — handling the real data problems (cleaning, imbalance, privacy, bias, monitoring) that decide whether a model is trustworthy in production.
+              In QA, a defect report only matters if the developer understands it; in ML, a model only matters if the data feeding it is sound and the system is watched after launch. Accuracy doesn't earn trust; reliability under real data does.
+            </p>
+          </div>
+        </div>
+
+        <!-- AUDIENCE -->
+        <div>
+          <div class="sub-title"><i class="fa-solid fa-users"></i> Audience Customization</div>
+          <div class="callout-green">
+            <p>
+              The original activity was a guided chatbot conversation. This portfolio version is customized for <strong>ML engineering leads, risk/compliance partners, and hiring managers evaluating production-readiness</strong>:
+              it adds USAA mainframe and QA framing — why data discipline is a quality concern — and presents the scenarios as operational standards rather than a coursework exercise.
+              My years of mainframe QA at USAA shaped every example.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div></div><footer style="text-align:center;padding:1.5rem;color:#6b7280;font-size:.85rem;">Sai Sri Gottapu · AIML-500 Professional Portfolio · Indiana Wesleyan University · 2026</footer></body></html>
